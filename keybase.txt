@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/volent
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://volent.fr
+  * I am volent (https://keybase.io/volent) on keybase.
+  * I have a public key with fingerprint F1D5 EDBB 89C8 8684 6061  B72A 7C3B DE27 0862 0B05
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01018e3d651d934d279f3e685b7fc4b9478759bfac64ed59aa3fc9b331ec388cf24b0a",
+            "fingerprint": "f1d5edbb89c886846061b72a7c3bde2708620b05",
+            "host": "keybase.io",
+            "key_id": "7c3bde2708620b05",
+            "kid": "01018e3d651d934d279f3e685b7fc4b9478759bfac64ed59aa3fc9b331ec388cf24b0a",
+            "uid": "bd1d02c976edfd57eae4b87734fb0719",
+            "username": "volent"
+        },
+        "service": {
+            "hostname": "volent.fr",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1458117093,
+    "expire_in": 157680000,
+    "prev": "ea9a68f4cc0cc89ba54417bd556001893911c8ac8fef20df7c221a684207eba4",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.51
+Comment: https://keybase.io/crypto
+
+yMIfAnicrVJLSFRRGB7tgQ1lkmAGbbzVQhG573Pu5CIqRTdRhEYvpnseVy/q3PHe
+q2WDNJRQWOPCx0K0p1GaUFQUtjGtFqEUVkTClMWUiKRTCKEEVudKLYKWnc3hfOf7
+vv/7f/4na5b5/Cmxvm/BkoYSnDI63FrnK5/eMBnhkEUauECEq6JLF60m1HGDVSbh
+Ahwv8AKkElEVgWiSTESgGRJVoYKAgWWkyQACRUOGjlWZEkXTdcnAGpIkgWIJQmyI
+MuJ1Lp8zzFAFtcO2GXKZrSEQhRKEoIYhVKGs8qqAgKgDLCFCRcBDVeQRrzBhpeV4
+ChYO6Q4tMC2GsUdwKd4/+P85d92SHSIC4UWsAZUSgyiA6lRGEABJNhAPBM0jOtQO
+6TWUseutasrabMznGFZvYuqN1evjr/8Cw2aysG25FraqGVzpumEn4MnchrDHO0pR
+8LdDEJkhwkbIFPXUdkwrxAUExsSu6VkKsgIFAfCalM/RY2HTpkHTYyhAhTw7Xh1a
+zyyprukqNGSMeYyhhnRFlgWAiKKoPJuYJmmCgKGOoUENkScGwKIoMIUs8oAiXea8
+nmpDFhdQWEy9glk6ZkVId+tsyjU+Gjq03Jfi961ckeqtls+/KuPPwrWfSvPd3Oj0
+3p8Yztv7Yna+PU3+NF9yY+b5xODps9mKuj4RS88L3SgYuXN4zfi9luT9/qr4wpGU
+E7nfd2yZSysf2t66cWF/33Q81tO0N8u/9gLM7736WI8mn+6vaYsEcrpODoaPnSqq
+K5netC9y6Vre18nekYXO4mq39OJi2c8v4vUfm2vf3OW63bbd8WhiV+ZdOrPtmtrZ
+7L4vGtHmOmLjzw5Eb3cePH85mbPjc3bQfHs88+LOjtezI3sqxG4gF642E3bia+zh
+q+GPY/6+7NGsmXNaS3TMuvVhMTf9zM8rGeVTNZGtsZ6XxcsHDjZPphb2l+Ymp9Ro
+sfRgIF62rqOJK+t69wuWcEiS
+=GSvb
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/volent
+
+==================================================================
