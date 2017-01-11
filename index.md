@@ -1,6 +1,8 @@
 # Florent Espanet
 
-Hi, I'm a Software Engineer actually living in France (Lyon). I enjoy working with Python and Docker on Linux using Emacs.
+Hi, I'm a Software Engineer actually living in France (Lyon).
+
+I enjoy working with Python and Docker on Linux using Emacs.
 
 [![Linkedin Logo](icons/linkedin.png)](https://www.linkedin.com/in/florentespanet)
 [![Github Logo](icons/github.png)](https://github.com/volnt)
