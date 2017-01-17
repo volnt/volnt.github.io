@@ -1,6 +1,6 @@
 # Florent Espanet
 
-Hi, I'm a Software Engineer actually living in France (Lyon).
+Hi, I'm a Software Engineer currently working for [LumApps](https://www.lumapps.com) in France (Lyon).
 
 I enjoy working with Python and Docker on Linux using Emacs.
 
