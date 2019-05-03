@@ -20,3 +20,15 @@ My professional life is filled with Python deployed on [[https://cloud.google.co
 #+ATTR_HTML: :alt Twitter Logo :align left
 [[https://twitter.com/volent_][file:icons/twitter.png]]
 #+end_footer
+
+#+begin_export html
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50530555-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-50530555-1');
+</script>
+#+end_export
