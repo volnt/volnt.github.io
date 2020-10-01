@@ -3,9 +3,9 @@
 #+OPTIONS: html-postamble:nil
 
 #+begin_body
-Hi, I'm a Software Engineer with 5 years of experience. I'm currently working remotely at [[https://www.backmarket.com/][BackMarket]].
+Hi, I'm a Senior Software Engineer currently working remotely at [[https://www.backmarket.com/][BackMarket]].
 
-Previously leading a team of 15 Backend Engineers at [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]).
+Previously managing a team of 15 Backend Engineers at [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]).
 
 My professional life is filled with Python deployed on [[https://cloud.google.com/][Google Cloud]] or [[http://aws.amazon.com][AWS]] but I also enjoy working with Lisp, C or C++ on side-projects.
 #+end_body
