@@ -1,24 +1,13 @@
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
-#+TITLE: Florent Espanet
-#+OPTIONS: html-postamble:nil
+#+title: Florent Espanet
+#+date: <2022-03-28 lun.>
+#+author: Florent Espanet
 
-#+begin_body
-Hi, I'm a Software Engineer currently working remotely for [[https://www.backmarket.com/][BackMarket]].
+Hi, I'm a Software Engineer currently working remotely at [[https://www.backmarket.com/][BackMarket]].
 
-Previously managing a team of 15 Backend Engineers for [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]).
+Previously managing a team of 15 Backend Engineers at [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]).
 
 I mainly work with Python on distributed systems.
 
 I also enjoy working with Haxe, Lisp, C or C++ on side-projects (such as [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]], a pixelart platformer).
-#+end_body
 
-#+begin_footer
-#+ATTR_HTML: :alt Linkedin Logo :align left
-[[https://www.linkedin.com/in/florentespanet][file:icons/linkedin.png]]
-#+ATTR_HTML: :alt Github Logo :align left
-[[https://github.com/volnt][file:icons/github.png]]
-#+ATTR_HTML: :alt StackOverflow Logo :align left
-[[http://stackoverflow.com/users/2437219/volent][file:icons/stackoverflow.png]]
-#+ATTR_HTML: :alt Twitter Logo :align left
-[[https://twitter.com/volent_][file:icons/twitter.png]]
-#+end_footer
+Socials: [[https://www.linkedin.com/in/florentespanet][@@html:<span class="fa-brands fa-linkedin"></span>@@]] [[https://github.com/volnt][@@html:<span class="fa-brands fa-github"></span>@@]]
