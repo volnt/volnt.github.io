@@ -8,7 +8,7 @@ Source for my Emacs configuration. The init.el file can be generated from this o
 
 #+caption: Screenshot of the result
 #+attr_html: :width 100%
-[[file:emacs-screen.jpg]]
+[[file:../images/emacs-screen.jpg]]
 
 ** Boostrap straight.el
 Use [[https://github.com/raxod502/straight.el][straight.el]] with the ~use-package~ form to install and manage emacs packages.

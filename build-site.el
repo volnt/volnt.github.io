@@ -21,22 +21,55 @@
       org-html-head-include-scripts nil       ;; Use our own scripts
       org-html-head-include-default-style nil ;; Use our own styles
       org-html-htmlize-output-type 'css        ;; Syntax highlighting
-      org-html-head "<link rel=\"stylesheet\" href=\"org.css\" /> <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css\">")
+      org-html-head "<link rel=\"stylesheet\" href=\"/css/org.css\" /> <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css\">")
 
 ;; Define the publishing project
 (setq org-publish-project-alist
-      (list
-       (list "org-site:main"
-             :recursive t
-             :base-directory "."
-             :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./public"
-             :with-author nil           ;; Don't include author name
-             :with-date nil             ;; Don't include date
-             :with-creator t            ;; Include Emacs and Org versions in footer
-             :with-toc t                ;; Include a table of contents
-             :section-numbers nil       ;; Don't include section numbers
-             :time-stamp-file nil)))    ;; Don't include time stamp in file
+      `(("home"
+         :base-directory "."
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "./public"
+         :with-author nil
+         :with-date nil
+         :with-creator t
+         :with-toc nil
+         :section-numbers nil
+         :time-stamp-file nil)
+
+        ("notes"
+         :auto-sitemap t
+         :sitemap-sort-files anti-chronologically
+         :sitemap-filename "index.org"
+         :sitemap-title "Notes"
+         :base-directory "./notes/"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "./public/notes/"
+         :with-author nil
+         :with-date t
+         :with-creator t
+         :with-toc t
+         :section-numbers nil
+         :time-stamp-file nil)
+
+        ("images"
+         :base-directory "./images/"
+         :base-extension "jpeg\\|jpg\\|gif\\|png"
+         :publishing-directory "./public/images/"
+         :publishing-function org-publish-attachment)
+
+        ("js"
+         :base-directory "./js/"
+         :base-extension "js"
+         :publishing-directory "./public/js/"
+         :publishing-function org-publish-attachment)
+
+        ("css"
+         :base-directory "./css/"
+         :base-extension "css"
+         :publishing-directory "./public/css/"
+         :publishing-function org-publish-attachment)
+
+        ("website" :components ("home" "notes" "images" "js" "css"))))
 
 ;; Generate the site output
 (org-publish-all t)
