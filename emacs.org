@@ -6,6 +6,10 @@
 * Emacs configuration
 Source for my Emacs configuration. The init.el file can be generated from this org file using ~org-babel-tangle~ ([[https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example][reference]]).
 
+#+caption: Screenshot of the result
+#+attr_html: :width 100%
+[[file:emacs-screen.jpg]]
+
 ** Boostrap straight.el
 Use [[https://github.com/raxod502/straight.el][straight.el]] with the ~use-package~ form to install and manage emacs packages.
 
