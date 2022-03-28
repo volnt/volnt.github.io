@@ -1,13 +1,11 @@
 #+title: Florent Espanet
 #+date: <2022-03-28 lun.>
+#+html_link_home: /
+#+html_link_up: /
 #+author: Florent Espanet
 
-Hi, I'm a Software Engineer currently working remotely at [[https://www.backmarket.com/][BackMarket]].
-
-Previously managing a team of 15 Backend Engineers at [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]).
-
-I mainly work with Python on distributed systems.
-
-I also enjoy working with Haxe, Lisp, C or C++ on side-projects (such as [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]], a pixelart platformer).
-
-[[https://www.linkedin.com/in/florentespanet][@@html:<span class="fa-brands fa-linkedin"></span>@@]] [[https://github.com/volnt][@@html:<span class="fa-brands fa-github"></span>@@]]
+- Full-remote Software Engineer currently working at [[https://www.backmarket.com/][BackMarket]].
+- Previously managed a team of 15 Backend Engineers at [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]).
+- Find me here: [[https://www.linkedin.com/in/florentespanet][@@html:<span class="fa-brands fa-linkedin"></span>@@]] [[https://github.com/volnt][@@html:<span class="fa-brands fa-github"></span>@@]]
+- Read me here: [[file:notes/][Notes]]
+- Published a 2d platformer on Steam: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]]

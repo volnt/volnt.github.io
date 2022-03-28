@@ -1,6 +1,8 @@
 #+author: Florent Espanet
 #+date: <2022-03-28 lun. 13:38>
 #+title: Emacs configuration
+#+html_link_home: /
+#+html_link_up: /notes/
 #+property: header-args :tangle ~/.emacs.d/init.el
 
 * Emacs configuration

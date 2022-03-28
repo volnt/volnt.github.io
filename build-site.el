@@ -41,6 +41,8 @@
          :sitemap-sort-files anti-chronologically
          :sitemap-filename "index.org"
          :sitemap-title "Notes"
+         :sitemap-function (lambda (title list)
+                             (format "#+title: %s\n#+html_link_home: /\n#+html_link_up: /\n\n%s" title  (string-join (mapcar (lambda (el) (format "- %s" (car el))) (cdr list)) "\n")))
          :base-directory "./notes/"
          :publishing-function org-html-publish-to-html
          :publishing-directory "./public/notes/"
