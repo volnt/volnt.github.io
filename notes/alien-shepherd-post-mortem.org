@@ -1,0 +1,44 @@
+#+title: Alien Shepherd Post-Mortem
+#+author: Florent Espanet
+#+date: <2022-02-26 sat.>
+#+html_link_home: /
+#+html_link_up: /notes/
+
+** Introduction
+I released my first game [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]] on the 25th of February on steam.
+
+@@html:<blockquote class="twitter-tweet"><p lang="en" dir="ltr">✨RELEASE DAY!! ✨<br>Long time no see Twitter! We were working on finishing the game and we are glad to release it today on <a href="https://twitter.com/hashtag/Steam?src=hash&amp;ref_src=twsrc%5Etfw">#Steam</a> : <a href="https://t.co/CbREgj14C4">https://t.co/CbREgj14C4</a> 🚀 Enjoy Alien Shepherd! 🎮🐑 <a href="https://t.co/WVLYkVRC3G">pic.twitter.com/WVLYkVRC3G</a></p>&mdash; Alien Shepherd (@AlienShepherd) <a href="https://twitter.com/AlienShepherd/status/1497168764063916044?ref_src=twsrc%5Etfw">February 25, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>@@
+
+Alien Shepherd is a precision platformer with a flying mechanic that allows you to go in any direction for a short duration. There's two different biomes and 50+ levels of increasing difficulty.
+
+I started development in December 2020 and worked on it after my full-time job until the release. My sister worked on the graphics and I worked on the development.
+
+Because I have a lot of experience with Python, I started working on the game using [[https://www.pygame.org/][pygame]]. But, I had a lot of difficulties making builds for Windows and making shaders work, so I switched to [[https://heaps.io/][Heaps.io]] after about 2 months. I'm a bit stubborn and didn't want to use an engine. I'm a developer and I like writing code, so a library made more sense to me.
+
+The initial goal was to release a game on Steam, and have fun doing it. Some people want to write a book in their life, I wanted to publish a game that I could be proud of.
+
+** Marketing & Performances
+At launch we had 80 wishlists. I used Twitter to get there, the #WishlistWednesday had the best conversion from tweet to wishlist. Right now we're at 115 wishlists. The release brought more wishlists than I anticipated, I guess the new releases appear on a Steam page that brings traffic to the game's page.
+
+Median time played is 47 minutes, which is lower than Steam average, but I expect this to go up because the game has only been out for 36h.
+
+Since release, we have sold 11 copies of the game for a gross revenue of $46 and a net revenue of $36.
+
+Most copies sold in my home country (France) even though I marketed the game in English. This tells me that people who bought the game are friends of friends and not people that came from Twitter.
+
+** What worked
+There are a lot of things that helped releasing the game:
+
+- Having a clear deadline in mind from the beginning (I wanted to spend 1 year on the game)
+- Not hesitating to reduce the scope (we could still be working on it for at least a year or two if we implemented everything we thought about)
+- Buying the music ($14) (we aren't musician, I tried to make some music but it took so much time for very bad results)
+- Making sure I was having fun developing the game (I didn't want a second job, I wanted a hobby)
+- Working with someone as motivated as me (I wouldn't have released the game alone)
+- Using the level editor [[https://ldtk.io/][LDtk]] (it's made by the creator of Dead Cells)
+
+** What I would do differently next time
+For this game, the goal was to release a game I could consider "finished". If I ever attempt to make another one, I would aim for financial success. That means >$20/h return on time spent developing the game.
+
+To achieve that, I would start the marketing much earlier in the development process. I would focus on a vertical slice of the game and polish it until I get enough wishlists. Only with enough wishlists, I would start spending time on creating content.
+
+I would also not create a platformer. They are, by far, not the [[https://www.gamedeveloper.com/business/genre-viability-on-steam-and-other-trends---an-analysis-using-review-count][best performing games]] on steam. And I feel like the ratio between play-time / development-time isn't high compared to something with high replayability like roguelikes. The level-design was definitely not what was the most fun for me.

@@ -1,5 +1,5 @@
 #+title: Florent Espanet
-#+date: <2022-03-28 lun.>
+#+date: <2022-03-28 mon.>
 #+html_link_home: /
 #+html_link_up: /
 #+author: Florent Espanet
