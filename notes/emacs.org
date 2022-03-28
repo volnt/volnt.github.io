@@ -86,8 +86,7 @@ Install org-mode first and configure it.
           org-fontify-done-headline t
           org-src-fontify-natively t
           fill-column 80
-          org-confirm-babel-evaluate nil
-          org-babel-default-header-args)
+          org-confirm-babel-evaluate nil)
     (setq org-capture-templates
           '(("b" "Backmarket todo entry." entry (file "~/dev/bm/todo.org")
              "* TODO %?\n  %i")
