@@ -10,4 +10,4 @@ I mainly work with Python on distributed systems.
 
 I also enjoy working with Haxe, Lisp, C or C++ on side-projects (such as [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]], a pixelart platformer).
 
-Socials: [[https://www.linkedin.com/in/florentespanet][@@html:<span class="fa-brands fa-linkedin"></span>@@]] [[https://github.com/volnt][@@html:<span class="fa-brands fa-github"></span>@@]]
+[[https://www.linkedin.com/in/florentespanet][@@html:<span class="fa-brands fa-linkedin"></span>@@]] [[https://github.com/volnt][@@html:<span class="fa-brands fa-github"></span>@@]]
