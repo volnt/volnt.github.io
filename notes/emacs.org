@@ -87,6 +87,7 @@ Install org-mode first and configure it.
           org-src-fontify-natively t
           fill-column 80
           line-move-visual t
+          org-src-preserve-indentation t
           org-confirm-babel-evaluate nil)
     (setq org-capture-templates
           '(("b" "Backmarket todo entry." entry (file "~/dev/bm/todo.org")

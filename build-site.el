@@ -1,5 +1,3 @@
-;; Set the package installation directory so that packages aren't stored in the
-;; ~/.emacs.d/elpa path.
 (require 'package)
 (setq package-user-dir (expand-file-name "./.packages"))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -16,13 +14,12 @@
 ;; Load the publishing system
 (require 'ox-publish)
 
-;; Customize the HTML output
 (setq org-html-validation-link nil            ;; Don't show validation link
       org-html-head-include-scripts nil       ;; Use our own scripts
       org-html-head-include-default-style nil ;; Use our own styles
-      org-html-htmlize-output-type 'css       ;; Syntax highlighting
       org-confirm-babel-evaluate nil          ;; Don't ask for confirmation when evaluating babel
-      org-html-head "<link rel=\"stylesheet\" href=\"/css/org.css\" /> <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css\">")
+      org-html-htmlize-output-type 'css       ;; Syntax highlighting
+      org-html-head "<link rel=\"stylesheet\" href=\"/css/org.css\" /> <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css\">")
 
 ;; Define the publishing project
 (setq org-publish-project-alist

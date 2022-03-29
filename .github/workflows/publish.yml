@@ -16,7 +16,7 @@ jobs:
         run: sudo add-apt-repository ppa:kelleyk/emacs --yes && sudo apt update --yes && sudo apt install emacs27-nox --yes
 
       - name: Build the site
-        run: make build
+        run: emacs -Q --script build-site.el
 
       - name: Publish generated content to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
