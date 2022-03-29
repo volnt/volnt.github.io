@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Automating Website Deployment with org-mode and Github pages</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="/css/org.css" /> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css">
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="/notes/"> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><div id="content">
+<h1 class="title">Automating Website Deployment with org-mode and Github pages</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcdb3923">Automating Website Deployment with org-mode and Github pages</a>
+<ul>
+<li><a href="#org78797c1">Exporting script</a>
+<ul>
+<li><a href="#orge6aa34e">Initialize packages</a></li>
+<li><a href="#orgd90e384">Customize the HTML output</a></li>
+<li><a href="#orga17cf28">Define the publishing project</a></li>
+</ul>
+</li>
+<li><a href="#orgdc60983">Building the site</a></li>
+<li><a href="#org4821859">Github Workflow</a></li>
+<li><a href="#org2351c94">Github configuration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgcdb3923" class="outline-2">
+<h2 id="orgcdb3923">Automating Website Deployment with org-mode and Github pages</h2>
+<div class="outline-text-2" id="text-orgcdb3923">
+<p>
+This is heavily inspired by <a href="https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/">System Crafters'</a> and <a href="https://nicolas.petton.fr/blog/blogging-with-org-mode.html">Nicolas Petton's</a> posts on the topic.
+</p>
+
+<p>
+The generated website has 3 features:
+</p>
+<ul class="org-ul">
+<li>Static <code>index.html</code></li>
+<li>Auto-generated <code>notes/index.html</code></li>
+<li>A list of <code>notes/*.html</code> files</li>
+</ul>
+
+<p>
+The <code>notes/index.html</code> is a simple list of links to all the existing <code>notes/*.html</code> files.
+</p>
+
+<p>
+Pages are written in the <code>org-mode</code> format and exported to HTML using <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">org publishing feature</a>.
+</p>
+</div>
+
+<div id="outline-container-org78797c1" class="outline-3">
+<h3 id="org78797c1">Exporting script</h3>
+<div class="outline-text-3" id="text-org78797c1">
+<p>
+Publishing org files is handled by <code>ox-publish</code>. Org files can be exported in several formats, but for HTML exports it needs <code>htmlize</code>.
+</p>
+
+<p>
+The script needs to be able to run with <code>emacs-nox</code> and not conflict with our configuration.
+</p>
+</div>
+
+<div id="outline-container-orge6aa34e" class="outline-4">
+<h4 id="orge6aa34e">Initialize packages</h4>
+<div class="outline-text-4" id="text-orge6aa34e">
+<p>
+Set the package installation directory so that packages aren't stored in the
+<code>/.emacs.d/elpa path. Then install ~htmlize</code> and load <code>ox-publish</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-keyword">require</span> '<span class="org-constant">package</span>)
+(<span class="org-keyword">setq</span> package-user-dir (expand-file-name <span class="org-string">"./.packages"</span>))
+(<span class="org-keyword">setq</span> package-archives '((<span class="org-string">"melpa"</span> . <span class="org-string">"https://melpa.org/packages/"</span>)
+                         (<span class="org-string">"elpa"</span> . <span class="org-string">"https://elpa.gnu.org/packages/"</span>)))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Initialize the package system</span>
+(package-initialize)
+(<span class="org-keyword">unless</span> package-archive-contents
+  (package-refresh-contents))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Install dependencies</span>
+(package-install 'htmlize)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Load the publishing system</span>
+(<span class="org-keyword">require</span> '<span class="org-constant">ox-publish</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd90e384" class="outline-4">
+<h4 id="orgd90e384">Customize the HTML output</h4>
+<div class="outline-text-4" id="text-orgd90e384">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-keyword">setq</span> org-html-validation-link nil            <span class="org-comment-delimiter">;; </span><span class="org-comment">Don't show validation link</span>
+      org-html-head-include-scripts nil       <span class="org-comment-delimiter">;; </span><span class="org-comment">Use our own scripts</span>
+      org-html-head-include-default-style nil <span class="org-comment-delimiter">;; </span><span class="org-comment">Use our own styles</span>
+      org-confirm-babel-evaluate nil          <span class="org-comment-delimiter">;; </span><span class="org-comment">Don't ask for confirmation when evaluating babel</span>
+      org-html-htmlize-output-type 'css       <span class="org-comment-delimiter">;; </span><span class="org-comment">Syntax highlighting</span>
+      org-html-head <span class="org-string">"&lt;link rel=\"stylesheet\" href=\"/css/org.css\" /&gt; &lt;link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css\"&gt;"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga17cf28" class="outline-4">
+<h4 id="orga17cf28">Define the publishing project</h4>
+<div class="outline-text-4" id="text-orga17cf28">
+<p>
+Org-files at the root level are exported at the root of <code>public/</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Define the publishing project</span>
+(<span class="org-keyword">setq</span> org-publish-project-alist
+      `((<span class="org-string">"home"</span>
+         <span class="org-builtin">:base-directory</span> <span class="org-string">"."</span>
+         <span class="org-builtin">:publishing-function</span> org-html-publish-to-html
+         <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public"</span>
+         <span class="org-builtin">:with-author</span> nil
+         <span class="org-builtin">:with-date</span> nil
+         <span class="org-builtin">:with-creator</span> t
+         <span class="org-builtin">:with-toc</span> nil
+         <span class="org-builtin">:section-numbers</span> nil
+         <span class="org-builtin">:time-stamp-file</span> nil)
+</pre>
+</div>
+
+<p>
+Files in <code>notes/</code> are exported to <code>public/notes/</code>. They are then added to a list of links ordered anti-chronologically in <code>notes/index.org</code>, which is itself exported to HTML.
+</p>
+
+<p>
+The <code>:sitemap-function</code> is used to add <code>#+html_link_home</code> and <code>#+html_link_up</code> to the generated <code>notes/index.org</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-string">"notes"</span>
+ <span class="org-builtin">:auto-sitemap</span> t
+ <span class="org-builtin">:sitemap-sort-files</span> anti-chronologically
+ <span class="org-builtin">:sitemap-filename</span> <span class="org-string">"index.org"</span>
+ <span class="org-builtin">:sitemap-title</span> <span class="org-string">"Notes"</span>
+ <span class="org-builtin">:sitemap-function</span> (<span class="org-keyword">lambda</span> (title list)
+                     (format <span class="org-string">"#+title: %s\n#+html_link_home: /\n#+html_link_up: /\n\n%s"</span> title  (string-join (mapcar (<span class="org-keyword">lambda</span> (el) (format <span class="org-string">"- %s"</span> (car el))) (cdr list)) <span class="org-string">"\n"</span>)))
+ <span class="org-builtin">:base-directory</span> <span class="org-string">"./notes/"</span>
+ <span class="org-builtin">:publishing-function</span> org-html-publish-to-html
+ <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/notes/"</span>
+ <span class="org-builtin">:with-author</span> nil
+ <span class="org-builtin">:with-date</span> t
+ <span class="org-builtin">:with-creator</span> t
+ <span class="org-builtin">:with-toc</span> t
+ <span class="org-builtin">:section-numbers</span> nil
+ <span class="org-builtin">:time-stamp-file</span> nil)
+</pre>
+</div>
+
+<p>
+Static files are exported in dedicated folders:
+</p>
+<ul class="org-ul">
+<li><code>images/</code>, <code>js/</code> and <code>css/</code> all go in <code>public/images/</code>, <code>public/js/</code> and <code>public/css</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-string">"images"</span>
+ <span class="org-builtin">:base-directory</span> <span class="org-string">"./images/"</span>
+ <span class="org-builtin">:base-extension</span> <span class="org-string">"jpeg</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">jpg</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">gif</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">png"</span>
+ <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/images/"</span>
+ <span class="org-builtin">:publishing-function</span> org-publish-attachment)
+
+(<span class="org-string">"js"</span>
+ <span class="org-builtin">:base-directory</span> <span class="org-string">"./js/"</span>
+ <span class="org-builtin">:base-extension</span> <span class="org-string">"js"</span>
+ <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/js/"</span>
+ <span class="org-builtin">:publishing-function</span> org-publish-attachment)
+
+(<span class="org-string">"css"</span>
+ <span class="org-builtin">:base-directory</span> <span class="org-string">"./css/"</span>
+ <span class="org-builtin">:base-extension</span> <span class="org-string">"css"</span>
+ <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/css/"</span>
+ <span class="org-builtin">:publishing-function</span> org-publish-attachment)
+
+(<span class="org-string">"website"</span> <span class="org-builtin">:components</span> (<span class="org-string">"home"</span> <span class="org-string">"notes"</span> <span class="org-string">"images"</span> <span class="org-string">"js"</span> <span class="org-string">"css"</span>))))
+</pre>
+</div>
+
+<p>
+In the end, everything is exported by <code>org-publish-all</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Generate the site output</span>
+(org-publish-all t)
+
+(message <span class="org-string">"Build complete!"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdc60983" class="outline-3">
+<h3 id="orgdc60983">Building the site</h3>
+<div class="outline-text-3" id="text-orgdc60983">
+<p>
+The script can be invoked with the following command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">emacs -Q --script build-site.el
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4821859" class="outline-3">
+<h3 id="org4821859">Github Workflow</h3>
+<div class="outline-text-3" id="text-org4821859">
+<p>
+Now that the website can be exported locally, it needs to be exported on the Github CI.
+</p>
+
+<p>
+We could just run the script locally and push the <code>*.html</code> on Github.
+</p>
+
+<p>
+But I want to update the website from devices without Emacs installed. If Github handles the export, then only org files need to be updated for the website to update.
+</p>
+
+<p>
+Publish to Github Pages on all push to <code>master</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+</pre>
+</div>
+
+<p>
+Install emacs-nox (a <a href="https://launchpad.net/~kelleyk/+archive/ubuntu/emacs">custom ppa</a> needs to be added to install emacs27 on Ubuntu) and publish the <code>public/</code> folder on a dedicated branch: <code>gh-pages</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+	uses: actions/checkout@v1
+
+      - name: Install Emacs
+	run: sudo add-apt-repository ppa:kelleyk/emacs --yes &amp;&amp; sudo apt update --yes &amp;&amp; sudo apt install emacs27-nox --yes
+
+      - name: Build the site
+	run: emacs -Q --script build-site.el
+
+      - name: Publish generated content to GitHub Pages
+	uses: JamesIves/github-pages-deploy-action@4.1.4
+	with:
+	  branch: gh-pages
+	  folder: public
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2351c94" class="outline-3">
+<h3 id="org2351c94">Github configuration</h3>
+<div class="outline-text-3" id="text-org2351c94">
+<p>
+Inside the Github repositories settings, the Source needs to be set to Branch: <code>gh-pages</code> and Directory: <code>/</code>:
+</p>
+
+
+<div class="figure">
+<p><img src="../images/github-pages.jpg" alt="github-pages.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Github configuration</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-03-29 Tue 00:00</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+</div>
+</body>
+</html>
