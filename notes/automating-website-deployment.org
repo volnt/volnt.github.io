@@ -1,0 +1,182 @@
+#+title: Automating Website Deployment with org-mode and Github pages
+#+author: Florent Espanet
+#+date: <2022-03-29 Tue>
+
+* Automating Website Deployment with org-mode and Github pages
+This is heavily inspired by [[https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/][System Crafters']] and [[https://nicolas.petton.fr/blog/blogging-with-org-mode.html][Nicolas Petton's]] posts on the topic.
+
+The generated website has 3 features:
+- Static ~index.html~
+- Auto-generated ~notes/index.html~
+- A list of ~notes/*.html~ files
+
+The ~notes/index.html~ is a simple list of links to all the existing ~notes/*.html~ files.
+
+Pages are written in the ~org-mode~ format and exported to HTML using [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][org publishing feature]].
+
+** Exporting script
+Publishing org files is handled by ~ox-publish~. Org files can be exported in several formats, but for HTML exports it needs ~htmlize~.
+
+The script needs to be able to run with ~emacs-nox~ and not conflict with our configuration.
+
+*** Initialize packages
+
+ Set the package installation directory so that packages aren't stored in the
+ ~/.emacs.d/elpa path. Then install ~htmlize~ and load ~ox-publish~.
+
+#+begin_src elisp
+  (require 'package)
+  (setq package-user-dir (expand-file-name "./.packages"))
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                           ("elpa" . "https://elpa.gnu.org/packages/")))
+
+  ;; Initialize the package system
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
+
+  ;; Install dependencies
+  (package-install 'htmlize)
+
+  ;; Load the publishing system
+  (require 'ox-publish)
+#+end_src
+
+*** Customize the HTML output
+
+#+begin_src elisp
+  (setq org-html-validation-link nil            ;; Don't show validation link
+        org-html-head-include-scripts nil       ;; Use our own scripts
+        org-html-head-include-default-style nil ;; Use our own styles
+        org-html-htmlize-output-type 'css        ;; Syntax highlighting
+        org-html-head "<link rel=\"stylesheet\" href=\"/css/org.css\" /> <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css\">")
+#+end_src
+
+*** Define the publishing project
+Org-files at the root level are exported at the root of ~public/~.
+
+#+begin_src elisp
+  ;; Define the publishing project
+  (setq org-publish-project-alist
+        `(("home"
+           :base-directory "."
+           :publishing-function org-html-publish-to-html
+           :publishing-directory "./public"
+           :with-author nil
+           :with-date nil
+           :with-creator t
+           :with-toc nil
+           :section-numbers nil
+           :time-stamp-file nil)
+#+end_src
+
+Files in ~notes/~ are exported to ~public/notes/~. They are then added to a list of links ordered anti-chronologically in ~notes/index.org~, which is itself exported to HTML.
+
+The ~:sitemap-function~ is used to add ~#+html_link_home~ and ~#+html_link_up~ to the generated ~notes/index.org~.
+
+#+begin_src elisp
+          ("notes"
+           :auto-sitemap t
+           :sitemap-sort-files anti-chronologically
+           :sitemap-filename "index.org"
+           :sitemap-title "Notes"
+           :sitemap-function (lambda (title list)
+                               (format "#+title: %s\n#+html_link_home: /\n#+html_link_up: /\n\n%s" title  (string-join (mapcar (lambda (el) (format "- %s" (car el))) (cdr list)) "\n")))
+           :base-directory "./notes/"
+           :publishing-function org-html-publish-to-html
+           :publishing-directory "./public/notes/"
+           :with-author nil
+           :with-date t
+           :with-creator t
+           :with-toc t
+           :section-numbers nil
+           :time-stamp-file nil)
+#+end_src
+
+Static files are exported in dedicated folders:
+- ~images/~, ~js/~ and ~css/~ all go in ~public/images/~, ~public/js/~ and ~public/css~
+
+#+begin_src elisp
+              ("images"
+               :base-directory "./images/"
+               :base-extension "jpeg\\|jpg\\|gif\\|png"
+               :publishing-directory "./public/images/"
+               :publishing-function org-publish-attachment)
+
+              ("js"
+               :base-directory "./js/"
+               :base-extension "js"
+               :publishing-directory "./public/js/"
+               :publishing-function org-publish-attachment)
+
+              ("css"
+               :base-directory "./css/"
+               :base-extension "css"
+               :publishing-directory "./public/css/"
+               :publishing-function org-publish-attachment)
+
+              ("website" :components ("home" "notes" "images" "js" "css"))))
+#+end_src
+
+In the end, everything is exported by ~org-publish-all~.
+
+#+begin_src elisp
+  ;; Generate the site output
+  (org-publish-all t)
+
+  (message "Build complete!")
+#+end_src
+
+** Building the site
+The script can be invoked with the following command:
+
+#+begin_src shell
+  emacs -Q --script build-site.el
+#+end_src
+
+** Github Workflow
+Now that the website can be exported locally, it needs to be exported on the Github CI.
+
+We could just run the script locally and push the ~*.html~ on Github.
+
+But I want to update the website from devices without Emacs installed. If Github handles the export, then only org files need to be updated for the website to update.
+
+Publish to Github Pages on all push to ~master~.
+
+#+begin_src yaml
+  name: Publish to GitHub Pages
+
+  on:
+    push:
+      branches:
+        - master
+#+end_src
+
+Install emacs-nox (a [[https://launchpad.net/~kelleyk/+archive/ubuntu/emacs][custom ppa]] needs to be added to install emacs27 on Ubuntu) and publish the ~public/~ folder on a dedicated branch: ~gh-pages~.
+
+#+begin_src yaml
+  jobs:
+    publish:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out
+          uses: actions/checkout@v1
+
+        - name: Install Emacs
+          run: sudo add-apt-repository ppa:kelleyk/emacs --yes && sudo apt update --yes && sudo apt install emacs27-nox --yes
+
+        - name: Build the site
+          run: emacs -Q --script build-site.el
+
+        - name: Publish generated content to GitHub Pages
+          uses: JamesIves/github-pages-deploy-action@4.1.4
+          with:
+            branch: gh-pages
+            folder: public
+#+end_src
+
+** Github configuration
+Inside the Github repositories settings, the Source needs to be set to Branch: ~gh-pages~ and Directory: ~/~:
+
+#+caption: Github configuration
+[[file:../images/github-pages.jpg]]
