@@ -11,30 +11,30 @@ I released my first game [[https://store.steampowered.com/app/1808820/Alien_Shep
 
 Alien Shepherd is a precision platformer with a flying mechanic that allows you to go in any direction for a short duration. There's two different biomes and 50+ levels of increasing difficulty.
 
-I started development in December 2020 and worked on it after my full-time job until the release. My sister worked on the graphics and I worked on the development.
+I started development in December 2020, and worked on it after my full-time job until the release. My sister worked on the graphics and I worked on the development.
 
-Because I have a lot of experience with Python, I started working on the game using [[https://www.pygame.org/][pygame]]. But, I had a lot of difficulties making builds for Windows and making shaders work, so I switched to [[https://heaps.io/][Heaps.io]] after about 2 months. I'm a bit stubborn and didn't want to use an engine. I'm a developer and I like writing code, so a library made more sense to me.
+Because I have a lot of experience with Python, I started working on the game using [[https://www.pygame.org/][pygame]]. But, I had a lot of difficulties making builds for Windows and making shaders work, so I switched to [[https://heaps.io/][Heaps.io]] after about 2 months. I didn't want to use an engine (like Unity), I like writing code, so a library made more sense.
 
-The initial goal was to release a game on Steam, and have fun doing it. Some people want to write a book in their life, I wanted to publish a game that I could be proud of.
+The initial goal was to release a game on Steam, and have fun doing it.
 
 ** Marketing & Performances
-At launch we had 80 wishlists. I used Twitter to get there, the #WishlistWednesday had the best conversion from tweet to wishlist. Right now we're at 115 wishlists. The release brought more wishlists than I anticipated, I guess the new releases appear on a Steam page that brings traffic to the game's page.
+At launch we had 80 wishlists. The only marketing we did was creating a Twitter account and sending some tweets, the #WishlistWednesday had the best conversion from tweet to wishlist. Right now we're at 115 wishlists. The release itself brought more wishlists than I anticipated. I guess the new games appear on a Steam page somewhere and that brings some traffic.
 
 Median time played is 47 minutes, which is lower than Steam average, but I expect this to go up because the game has only been out for 36h.
 
 Since release, we have sold 11 copies of the game for a gross revenue of $46 and a net revenue of $36.
 
-Most copies sold in my home country (France) even though I marketed the game in English. This tells me that people who bought the game are friends of friends and not people that came from Twitter.
+Most copies were sold in my home country (France) even though I marketed the game in English. This tells me that people who bought the game are friends of friends and not people that came from Twitter.
 
 ** What worked
 There are a lot of things that helped releasing the game:
 
 - Having a clear deadline in mind from the beginning (I wanted to spend 1 year on the game)
-- Not hesitating to reduce the scope (we could still be working on it for at least a year or two if we implemented everything we thought about)
+- Not hesitating to reduce the scope (we could still be working on it if we implemented everything initially planned)
 - Buying the music ($14) (we aren't musician, I tried to make some music but it took so much time for very bad results)
 - Making sure I was having fun developing the game (I didn't want a second job, I wanted a hobby)
 - Working with someone as motivated as me (I wouldn't have released the game alone)
-- Using the level editor [[https://ldtk.io/][LDtk]] (it's made by the creator of Dead Cells)
+- Using the level editor [[https://ldtk.io/][LDtk]] (made by the creator of Dead Cells)
 
 ** What I would do differently next time
 For this game, the goal was to release a game I could consider "finished". If I ever attempt to make another one, I would aim for financial success. That means >$20/h return on time spent developing the game.
