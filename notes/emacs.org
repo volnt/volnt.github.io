@@ -86,6 +86,7 @@ Install org-mode first and configure it.
           org-fontify-done-headline t
           org-src-fontify-natively t
           fill-column 80
+          line-move-visual t
           org-confirm-babel-evaluate nil)
     (setq org-capture-templates
           '(("b" "Backmarket todo entry." entry (file "~/dev/bm/todo.org")
@@ -119,15 +120,15 @@ A few major modes I use.
 Setup the theme (color-theme + modeline).
 
 #+begin_src elisp
-;; Theme
+  ;; Theme
 
-(use-package solarized-theme
-  :config (load-theme 'solarized-selenized-dark))
+  (use-package solarized-theme
+    :config (load-theme 'solarized-selenized-dark))
 
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :config
-  (use-package all-the-icons)) ;; eval-expression (all-the-icons-install-fonts) on first run
+  (use-package doom-modeline
+    :init (doom-modeline-mode 1)
+    :config
+    (use-package all-the-icons)) ;; eval-expression (all-the-icons-install-fonts) on first run
 #+end_src
 
 ** UI
@@ -223,6 +224,12 @@ For code-completion use ~company~.
 
   (use-package rainbow-delimiters
     :hook (prog-mode . rainbow-delimiters-mode))
+
+  (use-package hl-line
+    :config (global-hl-line-mode))
+
+  (use-package git-gutter
+    :config (global-git-gutter-mode t))
 #+end_src
 
 ** Utilities
@@ -231,43 +238,37 @@ Here are all utilities with no effect on UI.
 #+begin_src elisp
   ;; Utilities
 
-(use-package magit
-  :bind (("C-c s" . magit-status)
-	 ("C-c b" . magit-blame)
-	 ("C-c g" . vc-git-grep)))
+  (use-package magit
+    :bind (("C-c s" . magit-status)
+           ("C-c b" . magit-blame)
+           ("C-c g" . vc-git-grep)))
 
-(use-package undo-tree
-  :config (global-undo-tree-mode))
+  (use-package undo-tree
+    :config (global-undo-tree-mode))
 
-(use-package multiple-cursors
-  :bind (("C-c m" . mc/mark-all-in-region)
-         ("C-c C-n" . mc/mark-next-like-this)))
+  (use-package multiple-cursors
+    :bind (("C-c m" . mc/mark-all-in-region)
+           ("C-c C-n" . mc/mark-next-like-this)))
 
-(use-package projectile
-  :config (projectile-mode)
-  :bind-keymap ("C-c p" . projectile-command-map))
+  (use-package projectile
+    :config (projectile-mode)
+    :bind-keymap ("C-c p" . projectile-command-map))
 
-(use-package autorevert)
+  (use-package autorevert)
 
-(use-package hl-line
-  :config (global-hl-line-mode))
+  (use-package eldoc)
 
-(use-package eldoc)
+  (use-package realgud
+    :config (load-library "realgud"))
 
-(use-package git-gutter
-  :config (global-git-gutter-mode t))
+  (use-package yasnippet
+    :config
+    (yas-global-mode t)
+    (use-package yasnippet-snippets))
 
-(use-package realgud
-  :config (load-library "realgud"))
-
-(use-package yasnippet
-  :config
-  (yas-global-mode t)
-  (use-package yasnippet-snippets))
-
-(use-package gazr
-  :straight (gazr :type git :host github :repo "volnt/gazr.el")
-  :bind (("C-c h" . gazr)))
+  (use-package gazr
+    :straight (gazr :type git :host github :repo "volnt/gazr.el")
+    :bind (("C-c h" . gazr)))
 #+end_src
 
 ** Python setup
@@ -280,21 +281,21 @@ Because Python is the language I use the most, I use more packages than just the
 #+begin_src elisp
   ;; Python
 
-(use-package py-isort
-  :bind ("C-c i" . py-isort-before-save)
-  :custom (py-isort-options '("-w 120"))
-  :hook (before-save . py-isort-before-save))
+  (use-package py-isort
+    :bind ("C-c i" . py-isort-before-save)
+    :custom (py-isort-options '("-w 120"))
+    :hook (before-save . py-isort-before-save))
 
-(use-package blacken
-  :hook (python-mode . blacken-mode)
-  :custom (blacken-line-length 120))
+  (use-package blacken
+    :hook (python-mode . blacken-mode)
+    :custom (blacken-line-length 120))
 
-(use-package lsp-pyright
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp)))  ; or lsp-deferred
-  :bind-keymap ("C-c C-o" . lsp-command-map)
-  :bind (("C-c ;" . xref-find-definitions)
-         ("C-c ," . xref-pop-marker-stack)
-         ("C-c :" . lsp-find-references)))
+  (use-package lsp-pyright
+    :hook (python-mode . (lambda ()
+                           (require 'lsp-pyright)
+                           (lsp)))  ; or lsp-deferred
+    :bind-keymap ("C-c C-o" . lsp-command-map)
+    :bind (("C-c ;" . xref-find-definitions)
+           ("C-c ," . xref-pop-marker-stack)
+           ("C-c :" . lsp-find-references)))
 #+end_src
