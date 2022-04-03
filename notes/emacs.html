@@ -20,34 +20,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3035071">Emacs configuration</a>
+<li><a href="#orgf9ec004">Emacs configuration</a>
 <ul>
-<li><a href="#org2c48229">Boostrap straight.el</a></li>
-<li><a href="#orgd50a43e">Custom file location</a></li>
-<li><a href="#orgb971986">Update defaults</a></li>
-<li><a href="#orga002ec5">Org-mode</a></li>
-<li><a href="#org87ad2f9">Install major modes</a></li>
-<li><a href="#org0770c0c">Theme</a></li>
-<li><a href="#org778e987">UI</a></li>
-<li><a href="#org80bf187">Utilities</a></li>
-<li><a href="#org4871107">Python setup</a></li>
+<li><a href="#orgbd844c7">Boostrap straight.el</a></li>
+<li><a href="#org97d5ac0">Custom file location</a></li>
+<li><a href="#org88a339d">Update defaults</a></li>
+<li><a href="#org60177f1">Org-mode</a></li>
+<li><a href="#org1f7f762">Install major modes</a></li>
+<li><a href="#orgceb4552">Theme</a></li>
+<li><a href="#org6b75fad">UI</a></li>
+<li><a href="#org26f3d84">Utilities</a></li>
+<li><a href="#org7b9d6cc">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3035071" class="outline-2">
-<h2 id="org3035071">Emacs configuration</h2>
-<div class="outline-text-2" id="text-org3035071">
+<div id="outline-container-orgf9ec004" class="outline-2">
+<h2 id="orgf9ec004">Emacs configuration</h2>
+<div class="outline-text-2" id="text-orgf9ec004">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-org2c48229" class="outline-3">
-<h3 id="org2c48229">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-org2c48229">
+<div id="outline-container-orgbd844c7" class="outline-3">
+<h3 id="orgbd844c7">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-orgbd844c7">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
@@ -79,9 +79,9 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-orgd50a43e" class="outline-3">
-<h3 id="orgd50a43e">Custom file location</h3>
-<div class="outline-text-3" id="text-orgd50a43e">
+<div id="outline-container-org97d5ac0" class="outline-3">
+<h3 id="org97d5ac0">Custom file location</h3>
+<div class="outline-text-3" id="text-org97d5ac0">
 <p>
 Set the custom file location.
 </p>
@@ -95,9 +95,9 @@ Set the custom file location.
 </div>
 </div>
 
-<div id="outline-container-orgb971986" class="outline-3">
-<h3 id="orgb971986">Update defaults</h3>
-<div class="outline-text-3" id="text-orgb971986">
+<div id="outline-container-org88a339d" class="outline-3">
+<h3 id="org88a339d">Update defaults</h3>
+<div class="outline-text-3" id="text-org88a339d">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
@@ -129,9 +129,9 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-orga002ec5" class="outline-3">
-<h3 id="orga002ec5">Org-mode</h3>
-<div class="outline-text-3" id="text-orga002ec5">
+<div id="outline-container-org60177f1" class="outline-3">
+<h3 id="org60177f1">Org-mode</h3>
+<div class="outline-text-3" id="text-org60177f1">
 <p>
 Install org-mode first and configure it.
 </p>
@@ -147,22 +147,46 @@ Install org-mode first and configure it.
   (org-mode . org-indent-mode)
   (org-mode . visual-line-mode)
   <span class="org-builtin">:config</span>
-  (<span class="org-keyword">setq</span> org-html-doctype <span class="org-string">"html5"</span>
+  (<span class="org-keyword">setq</span> org-html-doctype <span class="org-string">"html5"</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">HTML export</span>
+
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Visual tweaks</span>
+        org-hide-emphasis-markers t
         org-ellipsis <span class="org-string">" &#9660; "</span>
+
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Startup</span>
         org-startup-with-inline-images t
         org-startup-folded <span class="org-string">"showeverything"</span>
-        org-babel-min-lines-for-block-output 1
         org-startup-indented t
+
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Babel</span>
+        org-babel-min-lines-for-block-output 1
+        org-confirm-babel-evaluate nil
+        org-src-preserve-indentation t
+
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Fontify</span>
         org-fontify-done-headline t
         org-src-fontify-natively t
-        org-hide-emphasis-markers t
-        org-src-preserve-indentation t
-        org-confirm-babel-evaluate nil)
+
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Agenda</span>
+        org-agenda-start-with-log-mode t
+        org-log-done 'time
+        org-log-into-drawer t
+        org-agenda-files '(<span class="org-string">"~/org/tasks.org"</span>)
+
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Refiling</span>
+        org-refile-targets '((<span class="org-string">"~/org/archives.org"</span> <span class="org-builtin">:maxlevel</span> . 1)))
+
+  (advice-add 'org-refile <span class="org-builtin">:after</span> 'org-save-all-org-buffers)
+
+  (<span class="org-keyword">setq</span> org-todo-keywords
+        '((sequence <span class="org-string">"TODO(t!)"</span> <span class="org-string">"|"</span> <span class="org-string">"DONE(d!)"</span>)))
+
   (<span class="org-keyword">setq</span> org-capture-templates
-        '((<span class="org-string">"b"</span> <span class="org-string">"Backmarket todo entry."</span> entry (file <span class="org-string">"~/dev/bm/todo.org"</span>)
-           <span class="org-string">"* TODO %?\n  %i"</span>)
-          (<span class="org-string">"p"</span> <span class="org-string">"Personal todo entry."</span> entry (file <span class="org-string">"~/todo.org"</span>)
-           <span class="org-string">"* TODO %?\n  %i"</span>)))
+        '((<span class="org-string">"t"</span> <span class="org-string">"Todo entry."</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+           <span class="org-string">"* TODO %?\n  %U\n  %a\n  %i"</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"m"</span> <span class="org-string">"Meeting"</span> entry (file+olp+datetree <span class="org-string">"~/org/notes.org"</span>)
+           <span class="org-string">"* %&lt;%I:%M %p&gt; - %a :meetings:\n\n%?\n\n"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
+
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (shell . t)))
   (use-package org-superstar
@@ -176,9 +200,9 @@ Install org-mode first and configure it.
 </div>
 </div>
 
-<div id="outline-container-org87ad2f9" class="outline-3">
-<h3 id="org87ad2f9">Install major modes</h3>
-<div class="outline-text-3" id="text-org87ad2f9">
+<div id="outline-container-org1f7f762" class="outline-3">
+<h3 id="org1f7f762">Install major modes</h3>
+<div class="outline-text-3" id="text-org1f7f762">
 <p>
 A few major modes I use.
 </p>
@@ -196,9 +220,9 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-org0770c0c" class="outline-3">
-<h3 id="org0770c0c">Theme</h3>
-<div class="outline-text-3" id="text-org0770c0c">
+<div id="outline-container-orgceb4552" class="outline-3">
+<h3 id="orgceb4552">Theme</h3>
+<div class="outline-text-3" id="text-orgceb4552">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
@@ -218,9 +242,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-org778e987" class="outline-3">
-<h3 id="org778e987">UI</h3>
-<div class="outline-text-3" id="text-org778e987">
+<div id="outline-container-org6b75fad" class="outline-3">
+<h3 id="org6b75fad">UI</h3>
+<div class="outline-text-3" id="text-org6b75fad">
 <p>
 All UI related packages.
 </p>
@@ -335,9 +359,9 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-org80bf187" class="outline-3">
-<h3 id="org80bf187">Utilities</h3>
-<div class="outline-text-3" id="text-org80bf187">
+<div id="outline-container-org26f3d84" class="outline-3">
+<h3 id="org26f3d84">Utilities</h3>
+<div class="outline-text-3" id="text-org26f3d84">
 <p>
 Here are all utilities with no effect on UI.
 </p>
@@ -387,9 +411,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-org4871107" class="outline-3">
-<h3 id="org4871107">Python setup</h3>
-<div class="outline-text-3" id="text-org4871107">
+<div id="outline-container-org7b9d6cc" class="outline-3">
+<h3 id="org7b9d6cc">Python setup</h3>
+<div class="outline-text-3" id="text-org7b9d6cc">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
