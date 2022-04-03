@@ -88,22 +88,46 @@ Install org-mode first and configure it.
   (org-mode . org-indent-mode)
   (org-mode . visual-line-mode)
   :config
-  (setq org-html-doctype "html5"
+  (setq org-html-doctype "html5" ;; HTML export
+
+        ;; Visual tweaks
+        org-hide-emphasis-markers t
         org-ellipsis " ▼ "
+
+        ;; Startup
         org-startup-with-inline-images t
         org-startup-folded "showeverything"
-        org-babel-min-lines-for-block-output 1
         org-startup-indented t
+
+        ;; Babel
+        org-babel-min-lines-for-block-output 1
+        org-confirm-babel-evaluate nil
+        org-src-preserve-indentation t
+
+        ;; Fontify
         org-fontify-done-headline t
         org-src-fontify-natively t
-        org-hide-emphasis-markers t
-        org-src-preserve-indentation t
-        org-confirm-babel-evaluate nil)
+
+        ;; Agenda
+        org-agenda-start-with-log-mode t
+        org-log-done 'time
+        org-log-into-drawer t
+        org-agenda-files '("~/org/tasks.org")
+
+        ;; Refiling
+        org-refile-targets '(("~/org/archives.org" :maxlevel . 1)))
+
+  (advice-add 'org-refile :after 'org-save-all-org-buffers)
+
+  (setq org-todo-keywords
+        '((sequence "TODO(t!)" "|" "DONE(d!)")))
+
   (setq org-capture-templates
-        '(("b" "Backmarket todo entry." entry (file "~/dev/bm/todo.org")
-           "* TODO %?\n  %i")
-          ("p" "Personal todo entry." entry (file "~/todo.org")
-           "* TODO %?\n  %i")))
+        '(("t" "Todo entry." entry (file "~/org/tasks.org")
+           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
+          ("m" "Meeting" entry (file+olp+datetree "~/org/notes.org")
+           "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n" :clock-in :clock-resume :empty-lines 1)))
+
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (shell . t)))
   (use-package org-superstar
