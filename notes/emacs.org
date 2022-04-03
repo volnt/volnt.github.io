@@ -8,128 +8,138 @@
 * Emacs configuration
 Source for my Emacs configuration. The init.el file can be generated from this org file using ~org-babel-tangle~ ([[https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example][reference]]).
 
-#+caption: Screenshot of the result
-#+attr_html: :width 100%
-[[file:../images/emacs-screen.jpg]]
-
 ** Boostrap straight.el
 Use [[https://github.com/raxod502/straight.el][straight.el]] with the ~use-package~ form to install and manage emacs packages.
 
 #+begin_src elisp
-  ;; Disable emacs default package.el (in favor of straight.el)
-  (setq package-enable-at-startup nil)
+;; Disable emacs default package.el (in favor of straight.el)
+(setq package-enable-at-startup nil)
 
-  ;; Bootstrap straight.el
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
+;; Bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-  (straight-use-package 'use-package) ;; Use the use-package form to install define packages
+(straight-use-package 'use-package) ;; Use the use-package form to install define packages
 
-  (use-package straight
-    :custom (straight-use-package-by-default t)) ;; Make :straight t the default to ensure packages are installed
+(use-package straight
+  :custom (straight-use-package-by-default t)) ;; Make :straight t the default to ensure packages are installed
 #+end_src
 
 ** Custom file location
 Set the custom file location.
 
 #+begin_src elisp
-  ;; Set custom file location
-  (setq custom-file "~/.emacs.d/custom.el")
-  (load custom-file)
+;; Set custom file location
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 #+end_src
 
 ** Update defaults
 Update a few defaults like the menu-bar, scroll-bar etc.
 #+begin_src elisp
-  ;; Remove menu, scroll bars and other visual things
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (setq column-number-mode nil)
-  (setq line-number-mode nil)
-  (setq size-indication-mode nil)
-  (setq inhibit-startup-screen t)
-  (setq mouse-yank-at-point t)
-  (setq-default indent-tabs-mode nil)
-  (global-display-line-numbers-mode)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Remove menu, scroll bars and other visual things
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(setq column-number-mode nil)
+(setq line-number-mode nil)
+(setq size-indication-mode nil)
+(setq inhibit-startup-screen t)
+(setq mouse-yank-at-point t)
+(setq-default indent-tabs-mode nil)
+
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
+
+#+RESULTS:
+| py-isort-before-save | delete-trailing-whitespace |
 
 ** Org-mode
 Install org-mode first and configure it.
 
 #+begin_src elisp
-  ;; Org-mode
+;; Org-mode
 
-  (use-package org
-    :bind (("C-c a" . org-agenda-list)
-           ("C-c l" . org-store-link)
-           ("C-c c" . org-capture))
-    :hook (org-mode . org-indent-mode)
-    :config
-    (setq org-html-doctype "html5"
-          org-ellipsis " ▼ "
-          org-startup-with-inline-images t
-          org-startup-folded "showeverything"
-          org-babel-min-lines-for-block-output 1
-          org-startup-indented t
-          org-fontify-done-headline t
-          org-src-fontify-natively t
-          fill-column 80
-          line-move-visual t
-          org-src-preserve-indentation t
-          org-confirm-babel-evaluate nil)
-    (setq org-capture-templates
-          '(("b" "Backmarket todo entry." entry (file "~/dev/bm/todo.org")
-             "* TODO %?\n  %i")
-            ("p" "Personal todo entry." entry (file "~/todo.org")
-             "* TODO %?\n  %i")))
-    (org-babel-do-load-languages
-     'org-babel-load-languages '((python . t) (shell . t)))
-    (use-package org-superstar
-      :hook (org-mode . org-superstar-mode)
-      :custom
-      (org-superstar-remove-leading-stars t)
-      (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
-    (use-package org-tree-slide))
+(use-package org
+  :bind (("C-c a" . org-agenda-list)
+         ("C-c l" . org-store-link)
+         ("C-c c" . org-capture))
+  :hook
+  (org-mode . org-indent-mode)
+  (org-mode . visual-line-mode)
+  :config
+  (setq org-html-doctype "html5"
+        org-ellipsis " ▼ "
+        org-startup-with-inline-images t
+        org-startup-folded "showeverything"
+        org-babel-min-lines-for-block-output 1
+        org-startup-indented t
+        org-fontify-done-headline t
+        org-src-fontify-natively t
+        org-hide-emphasis-markers t
+        org-src-preserve-indentation t
+        org-confirm-babel-evaluate nil)
+  (setq org-capture-templates
+        '(("b" "Backmarket todo entry." entry (file "~/dev/bm/todo.org")
+           "* TODO %?\n  %i")
+          ("p" "Personal todo entry." entry (file "~/todo.org")
+           "* TODO %?\n  %i")))
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((python . t) (shell . t)))
+  (use-package org-superstar
+    :hook (org-mode . org-superstar-mode)
+    :custom
+    (org-superstar-remove-leading-stars t)
+    (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
+  (use-package org-tree-slide))
 #+end_src
 
 ** Install major modes
 A few major modes I use.
 
 #+begin_src elisp
-  ;; Major modes
+;; Major modes
 
-  (use-package lua-mode)
-  (use-package typescript-mode)
-  (use-package yaml-mode)
-  (use-package terraform-mode)
-  (use-package markdown-mode)
+(use-package lua-mode)
+(use-package typescript-mode)
+(use-package yaml-mode)
+(use-package terraform-mode)
+(use-package markdown-mode)
 #+end_src
 
 ** Theme
 Setup the theme (color-theme + modeline).
 
 #+begin_src elisp
-  ;; Theme
+;; Theme
 
-  (use-package solarized-theme
-    :config (load-theme 'solarized-selenized-dark))
+(use-package solarized-theme
+  :config (load-theme 'solarized-selenized-dark))
 
-  (use-package doom-modeline
-    :init (doom-modeline-mode 1)
-    :config
-    (use-package all-the-icons)) ;; eval-expression (all-the-icons-install-fonts) on first run
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :config
+  (use-package all-the-icons)) ;; eval-expression (all-the-icons-install-fonts) on first run
 #+end_src
 
 ** UI
@@ -140,136 +150,149 @@ Use ~vertico~ for minibuffer completion with ~marginalia~ for added details.
 For code-completion use ~company~.
 
 #+begin_src elisp
-  ;; UI
+;; UI
 
-  (use-package unicode-fonts
-    :config
-    (unicode-fonts-setup)
-    (use-package font-utils)
-    (use-package ucs-utils))
+(use-package unicode-fonts
+  :config
+  (unicode-fonts-setup)
+  (use-package font-utils)
+  (use-package ucs-utils))
 
-  (use-package flycheck
-    :config (global-flycheck-mode))
+(use-package flycheck
+  :config (global-flycheck-mode))
 
-  (use-package vertico
-    :init
-    (vertico-mode)
+(use-package vertico
+  :init
+  (vertico-mode)
 
-    ;; Different scroll margin
-    ;; (setq vertico-scroll-margin 0)
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
 
-    ;; Show more candidates
-    ;; (setq vertico-count 20)
+  ;; Show more candidates
+  ;; (setq vertico-count 20)
 
-    ;; Grow and shrink the Vertico minibuffer
-    ;; (setq vertico-resize t)
+  ;; Grow and shrink the Vertico minibuffer
+  ;; (setq vertico-resize t)
 
-    ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-    ;; (setq vertico-cycle t)
-    )
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  ;; (setq vertico-cycle t)
+  )
 
-  ;; Optionally use the `orderless' completion style. See
-  ;; `+orderless-dispatch' in the Consult wiki for an advanced Orderless style
-  ;; dispatcher. Additionally enable `partial-completion' for file path
-  ;; expansion. `partial-completion' is important for wildcard support.
-  ;; Multiple files can be opened at once with `find-file' if you enter a
-  ;; wildcard. You may also give the `initials' completion style a try.
-  (use-package orderless
-    :init
-    ;; Configure a custom style dispatcher (see the Consult wiki)
-    ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
-    ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-    (setq completion-styles '(orderless)
-          completion-category-defaults nil
-          completion-category-overrides '((file (styles partial-completion)))))
+;; Optionally use the `orderless' completion style. See
+;; `+orderless-dispatch' in the Consult wiki for an advanced Orderless style
+;; dispatcher. Additionally enable `partial-completion' for file path
+;; expansion. `partial-completion' is important for wildcard support.
+;; Multiple files can be opened at once with `find-file' if you enter a
+;; wildcard. You may also give the `initials' completion style a try.
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
 
-  ;; Persist history over Emacs restarts. Vertico sorts by history position.
-  (use-package savehist
-    :init
-    (savehist-mode))
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 
-  ;; A few more useful configurations...
-  (use-package emacs
-    :init
-    ;; Add prompt indicator to `completing-read-multiple'.
-    ;; Alternatively try `consult-completing-read-multiple'.
-    (defun crm-indicator (args)
-      (cons (concat "[CRM] " (car args)) (cdr args)))
-    (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+;; A few more useful configurations...
+(use-package emacs
+  :init
+  ;; Add prompt indicator to `completing-read-multiple'.
+  ;; Alternatively try `consult-completing-read-multiple'.
+  (defun crm-indicator (args)
+    (cons (concat "[CRM] " (car args)) (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
-    ;; Do not allow the cursor in the minibuffer prompt
-    (setq minibuffer-prompt-properties
-          '(read-only t cursor-intangible t face minibuffer-prompt))
-    (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-    ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
-    ;; Vertico commands are hidden in normal buffers.
-    ;; (setq read-extended-command-predicate
-    ;;       #'command-completion-default-include-p)
+  ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+  ;; Vertico commands are hidden in normal buffers.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
 
-    ;; Enable recursive minibuffers
-    (setq enable-recursive-minibuffers t))
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t))
 
-  (use-package marginalia
-    :config
-    (marginalia-mode))
+(use-package marginalia
+  :config
+  (marginalia-mode))
 
-  (use-package company
-    :config (global-company-mode)
-    :bind (:map company-active-map ("<tab>" . company-complete-selection)))
+(use-package company
+  :config (global-company-mode)
+  :bind (:map company-active-map ("<tab>" . company-complete-selection))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
 
-  (use-package highlight-indentation
-    :straight (highlight-identation :type git :host github :repo "antonj/Highlight-Indentation-for-Emacs")
-    :hook (prog-mode . highlight-indentation-mode)
-    :config (setq highlight-indentation-blank-lines t))
+(use-package highlight-indentation
+  :straight (highlight-identation :type git :host github :repo "antonj/Highlight-Indentation-for-Emacs")
+  :hook (prog-mode . highlight-indentation-mode)
+  :config (setq highlight-indentation-blank-lines t))
 
-  (use-package rainbow-delimiters
-    :hook (prog-mode . rainbow-delimiters-mode))
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
-  (use-package hl-line
-    :config (global-hl-line-mode))
+(use-package hl-line
+  :config (global-hl-line-mode))
 
-  (use-package git-gutter
-    :config (global-git-gutter-mode t))
+(use-package git-gutter
+  :config (global-git-gutter-mode t))
+
+(use-package helpful)
 #+end_src
+
+#+RESULTS:
 
 ** Utilities
 Here are all utilities with no effect on UI.
 
 #+begin_src elisp
-  ;; Utilities
+;; Utilities
 
-  (use-package magit
-    :bind (("C-c s" . magit-status)
-           ("C-c b" . magit-blame)
-           ("C-c g" . vc-git-grep)))
+(use-package magit
+  :bind (("C-c s" . magit-status)
+         ("C-c b" . magit-blame)
+         ("C-c g" . vc-git-grep)))
 
-  (use-package undo-tree
-    :config (global-undo-tree-mode))
+(use-package undo-tree
+  :config (global-undo-tree-mode))
 
-  (use-package multiple-cursors
-    :bind (("C-c m" . mc/mark-all-in-region)
-           ("C-c C-n" . mc/mark-next-like-this)))
+(use-package multiple-cursors
+  :bind (("C-c m" . mc/mark-all-in-region)
+         ("C-c C-n" . mc/mark-next-like-this)))
 
-  (use-package projectile
-    :config (projectile-mode)
-    :bind-keymap ("C-c p" . projectile-command-map))
+(use-package projectile
+  :config (projectile-mode)
+  :bind-keymap ("C-c p" . projectile-command-map))
 
-  (use-package autorevert)
+(use-package autorevert)
 
-  (use-package eldoc)
+(use-package which-key
+  :config
+  (which-key-mode))
 
-  (use-package realgud
-    :config (load-library "realgud"))
+(use-package eldoc)
 
-  (use-package yasnippet
-    :config
-    (yas-global-mode t)
-    (use-package yasnippet-snippets))
+(use-package realgud
+  :config (load-library "realgud"))
 
-  (use-package gazr
-    :straight (gazr :type git :host github :repo "volnt/gazr.el")
-    :bind (("C-c h" . gazr)))
+(use-package yasnippet
+  :config
+  (yas-global-mode t)
+  (use-package yasnippet-snippets))
+
+(use-package vterm)
+
+(use-package gazr
+  :straight (gazr :type git :host github :repo "volnt/gazr.el")
+  :bind (("C-c C-g" . gazr)))
 #+end_src
 
 ** Python setup
@@ -280,8 +303,19 @@ Because Python is the language I use the most, I use more packages than just the
 ~lsp-pyright~ is used for code completion, flycheck warnings and ~find-definitions~ / ~find-references~.
 
 #+begin_src elisp
-  ;; Python
+;; Python
 
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t)
+  (use-package lsp-ui)
+  (use-package lsp-treemacs))
+
+(use-package python-mode
+  :config
   (use-package py-isort
     :bind ("C-c i" . py-isort-before-save)
     :custom (py-isort-options '("-w 120"))
@@ -298,5 +332,5 @@ Because Python is the language I use the most, I use more packages than just the
     :bind-keymap ("C-c C-o" . lsp-command-map)
     :bind (("C-c ;" . xref-find-definitions)
            ("C-c ," . xref-pop-marker-stack)
-           ("C-c :" . lsp-find-references)))
+           ("C-c :" . lsp-find-references))))
 #+end_src
