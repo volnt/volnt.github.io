@@ -112,7 +112,7 @@ Install org-mode first and configure it.
         org-agenda-start-with-log-mode t
         org-log-done 'time
         org-log-into-drawer t
-        org-agenda-files '("~/org/tasks.org")
+        org-agenda-files '("~/org/tasks.org" "~/org/keep.org")
 
         ;; Refiling
         org-refile-targets '(("~/org/archives.org" :maxlevel . 1)))
@@ -129,7 +129,7 @@ Install org-mode first and configure it.
            "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n" :clock-in :clock-resume :empty-lines 1)))
 
   (org-babel-do-load-languages
-   'org-babel-load-languages '((python . t) (shell . t)))
+   'org-babel-load-languages '((python . t) (shell . t) (C . t)))
   (use-package org-superstar
     :hook (org-mode . org-superstar-mode)
     :custom
@@ -290,7 +290,7 @@ Here are all utilities with no effect on UI.
 
 (use-package multiple-cursors
   :bind (("C-c m" . mc/mark-all-in-region)
-         ("C-c C-n" . mc/mark-next-like-this)))
+         ("C-c n" . mc/mark-next-like-this)))
 
 (use-package projectile
   :config (projectile-mode)
