@@ -135,7 +135,9 @@ Install org-mode first and configure it.
     :custom
     (org-superstar-remove-leading-stars t)
     (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
-  (use-package org-tree-slide))
+  (use-package org-tree-slide)
+  (use-package org-present)
+  (use-package ox-jira))
 #+end_src
 
 ** Install major modes
@@ -312,11 +314,20 @@ Here are all utilities with no effect on UI.
   (yas-global-mode t)
   (use-package yasnippet-snippets))
 
-(use-package vterm)
-
 (use-package gazr
   :straight (gazr :type git :host github :repo "volnt/gazr.el")
   :bind (("C-c C-g" . gazr)))
+#+end_src
+
+*** Vterm
+Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
+
+#+begin_src elisp
+
+(use-package vterm
+  :config
+  (setq vterm-max-scrollback 100000))
+
 #+end_src
 
 ** Python setup
