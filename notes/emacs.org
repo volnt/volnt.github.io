@@ -342,8 +342,6 @@ Because Python is the language I use the most, I use more packages than just the
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t)
   (use-package lsp-ui)
@@ -352,7 +350,6 @@ Because Python is the language I use the most, I use more packages than just the
 (use-package python-mode
   :config
   (use-package py-isort
-    :bind ("C-c i" . py-isort-before-save)
     :custom (py-isort-options '("-w 120"))
     :hook (before-save . py-isort-before-save))
 
