@@ -111,6 +111,7 @@ Install org-mode first and configure it.
         ;; Agenda
         org-agenda-start-with-log-mode t
         org-log-done 'time
+        org-agenda-skip-scheduled-if-done t
         org-log-into-drawer t
         org-agenda-files '("~/org/tasks.org" "~/org/keep.org")
 
