@@ -139,7 +139,7 @@ Install org-mode first and configure it.
           ("mo" "One-to-One" entry (file+headline "~/org/work/one-one.org" "NEXT")
            "* TODO %? :work:meeting:\n%U\n%i" :clock-in :clock-resume :empty-lines 1)
           ("mt" "Tech Screening" entry (file "~/org/tasks.org")
-           "* %? :work:meeting:\n%U\n  [[https://backmarket.atlassian.net/wiki/spaces/TRP/pages/2470641885/Backend+technical+screening][Reference]]\n%i" :clock-in :clock-resume :empty-lines 1)))
+           (file "~/org/templates/tech-screening.org") :clock-in :clock-resume :empty-lines 1)))
 
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (shell . t) (C . t) (gnuplot . t)))
