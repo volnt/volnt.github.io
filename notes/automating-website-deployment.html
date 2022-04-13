@@ -20,18 +20,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5f51075">Automating Website Deployment with org-mode and Github pages</a>
+<li><a href="#org100a381">Automating Website Deployment with org-mode and Github pages</a>
 <ul>
-<li><a href="#org1c7955a">Exporting script</a>
+<li><a href="#org6aa9290">Exporting script</a>
 <ul>
-<li><a href="#orgfc0de2c">Initialize packages</a></li>
-<li><a href="#orgf4433a9">Customize the HTML output</a></li>
-<li><a href="#org1021bee">Define the publishing project</a></li>
+<li><a href="#org8a21f08">Initialize packages</a></li>
+<li><a href="#org49dddb2">Customize the HTML output</a></li>
+<li><a href="#org56de9d8">Define the publishing project</a></li>
 </ul>
 </li>
-<li><a href="#org4b549e5">Building the site</a></li>
-<li><a href="#orgeade51a">Github Workflow</a></li>
-<li><a href="#org57c4d39">Github configuration</a></li>
+<li><a href="#orgb701808">Building the site</a></li>
+<li><a href="#org355d6f4">Github Workflow</a></li>
+<li><a href="#org7a285a3">Github configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -39,9 +39,9 @@
 </div>
 
 
-<div id="outline-container-org5f51075" class="outline-2">
-<h2 id="org5f51075">Automating Website Deployment with org-mode and Github pages</h2>
-<div class="outline-text-2" id="text-org5f51075">
+<div id="outline-container-org100a381" class="outline-2">
+<h2 id="org100a381">Automating Website Deployment with org-mode and Github pages</h2>
+<div class="outline-text-2" id="text-org100a381">
 <p>
 This is heavily inspired by <a href="https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/">System Crafters'</a> and <a href="https://nicolas.petton.fr/blog/blogging-with-org-mode.html">Nicolas Petton's</a> posts on the topic.
 </p>
@@ -64,9 +64,9 @@ Pages are written in the <code>org-mode</code> format and exported to HTML using
 </p>
 </div>
 
-<div id="outline-container-org1c7955a" class="outline-3">
-<h3 id="org1c7955a">Exporting script</h3>
-<div class="outline-text-3" id="text-org1c7955a">
+<div id="outline-container-org6aa9290" class="outline-3">
+<h3 id="org6aa9290">Exporting script</h3>
+<div class="outline-text-3" id="text-org6aa9290">
 <p>
 Publishing org files is handled by <code>ox-publish</code>. Org files can be exported in several formats, but for HTML exports it needs <code>htmlize</code>.
 </p>
@@ -76,9 +76,9 @@ The script needs to be able to run with <code>emacs-nox</code> and not conflict 
 </p>
 </div>
 
-<div id="outline-container-orgfc0de2c" class="outline-4">
-<h4 id="orgfc0de2c">Initialize packages</h4>
-<div class="outline-text-4" id="text-orgfc0de2c">
+<div id="outline-container-org8a21f08" class="outline-4">
+<h4 id="org8a21f08">Initialize packages</h4>
+<div class="outline-text-4" id="text-org8a21f08">
 <p>
 Set the package installation directory so that packages aren't stored in the
 <code>/.emacs.d/elpa path. Then install ~htmlize</code> and load <code>ox-publish</code>.
@@ -105,9 +105,9 @@ Set the package installation directory so that packages aren't stored in the
 </div>
 </div>
 
-<div id="outline-container-orgf4433a9" class="outline-4">
-<h4 id="orgf4433a9">Customize the HTML output</h4>
-<div class="outline-text-4" id="text-orgf4433a9">
+<div id="outline-container-org49dddb2" class="outline-4">
+<h4 id="org49dddb2">Customize the HTML output</h4>
+<div class="outline-text-4" id="text-org49dddb2">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span class="org-keyword">setq</span> org-html-validation-link nil            <span class="org-comment-delimiter">;; </span><span class="org-comment">Don't show validation link</span>
       org-html-head-include-scripts nil       <span class="org-comment-delimiter">;; </span><span class="org-comment">Use our own scripts</span>
@@ -120,9 +120,9 @@ Set the package installation directory so that packages aren't stored in the
 </div>
 </div>
 
-<div id="outline-container-org1021bee" class="outline-4">
-<h4 id="org1021bee">Define the publishing project</h4>
-<div class="outline-text-4" id="text-org1021bee">
+<div id="outline-container-org56de9d8" class="outline-4">
+<h4 id="org56de9d8">Define the publishing project</h4>
+<div class="outline-text-4" id="text-org56de9d8">
 <p>
 Org-files at the root level are exported at the root of <code>public/</code>.
 </p>
@@ -216,9 +216,9 @@ In the end, everything is exported by <code>org-publish-all</code>.
 </div>
 </div>
 
-<div id="outline-container-org4b549e5" class="outline-3">
-<h3 id="org4b549e5">Building the site</h3>
-<div class="outline-text-3" id="text-org4b549e5">
+<div id="outline-container-orgb701808" class="outline-3">
+<h3 id="orgb701808">Building the site</h3>
+<div class="outline-text-3" id="text-orgb701808">
 <p>
 The script can be invoked with the following command:
 </p>
@@ -230,9 +230,9 @@ The script can be invoked with the following command:
 </div>
 </div>
 
-<div id="outline-container-orgeade51a" class="outline-3">
-<h3 id="orgeade51a">Github Workflow</h3>
-<div class="outline-text-3" id="text-orgeade51a">
+<div id="outline-container-org355d6f4" class="outline-3">
+<h3 id="org355d6f4">Github Workflow</h3>
+<div class="outline-text-3" id="text-org355d6f4">
 <p>
 Now that the website can be exported locally, it needs to be exported on the Github CI.
 </p>
@@ -287,9 +287,9 @@ Install emacs-nox (a <a href="https://launchpad.net/~kelleyk/+archive/ubuntu/ema
 </div>
 </div>
 
-<div id="outline-container-org57c4d39" class="outline-3">
-<h3 id="org57c4d39">Github configuration</h3>
-<div class="outline-text-3" id="text-org57c4d39">
+<div id="outline-container-org7a285a3" class="outline-3">
+<h3 id="org7a285a3">Github configuration</h3>
+<div class="outline-text-3" id="text-org7a285a3">
 <p>
 Inside the Github repositories settings, the Source needs to be set to Branch: <code>gh-pages</code> and Directory: <code>/</code>:
 </p>

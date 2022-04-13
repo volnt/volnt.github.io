@@ -20,38 +20,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd128058">Emacs configuration</a>
+<li><a href="#org01a527b">Emacs configuration</a>
 <ul>
-<li><a href="#org00952d2">Boostrap straight.el</a></li>
-<li><a href="#org5370b39">Custom file location</a></li>
-<li><a href="#orgd52fcd0">Update defaults</a></li>
-<li><a href="#org494060c">Org-mode</a></li>
-<li><a href="#orge657989">Install major modes</a></li>
-<li><a href="#orgd1d84aa">Theme</a></li>
-<li><a href="#orgc79a7cd">UI</a></li>
-<li><a href="#org2dca971">Utilities</a>
+<li><a href="#org3927b78">Boostrap straight.el</a></li>
+<li><a href="#org885da7d">Custom file location</a></li>
+<li><a href="#org210d4cf">Update defaults</a></li>
+<li><a href="#orgfc1679f">Org-mode</a></li>
+<li><a href="#orgd2165bf">Install major modes</a></li>
+<li><a href="#org5e7da52">Theme</a></li>
+<li><a href="#org98771e9">UI</a></li>
+<li><a href="#org3285218">Utilities</a>
 <ul>
-<li><a href="#orgffe02d4">Vterm</a></li>
+<li><a href="#orgcd63cda">Vterm</a></li>
 </ul>
 </li>
-<li><a href="#org60d6a97">Python setup</a></li>
+<li><a href="#orgeb5d7f5">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd128058" class="outline-2">
-<h2 id="orgd128058">Emacs configuration</h2>
-<div class="outline-text-2" id="text-orgd128058">
+<div id="outline-container-org01a527b" class="outline-2">
+<h2 id="org01a527b">Emacs configuration</h2>
+<div class="outline-text-2" id="text-org01a527b">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-org00952d2" class="outline-3">
-<h3 id="org00952d2">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-org00952d2">
+<div id="outline-container-org3927b78" class="outline-3">
+<h3 id="org3927b78">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-org3927b78">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
@@ -83,9 +83,9 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-org5370b39" class="outline-3">
-<h3 id="org5370b39">Custom file location</h3>
-<div class="outline-text-3" id="text-org5370b39">
+<div id="outline-container-org885da7d" class="outline-3">
+<h3 id="org885da7d">Custom file location</h3>
+<div class="outline-text-3" id="text-org885da7d">
 <p>
 Set the custom file location.
 </p>
@@ -99,9 +99,9 @@ Set the custom file location.
 </div>
 </div>
 
-<div id="outline-container-orgd52fcd0" class="outline-3">
-<h3 id="orgd52fcd0">Update defaults</h3>
-<div class="outline-text-3" id="text-orgd52fcd0">
+<div id="outline-container-org210d4cf" class="outline-3">
+<h3 id="org210d4cf">Update defaults</h3>
+<div class="outline-text-3" id="text-org210d4cf">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
@@ -133,9 +133,9 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-org494060c" class="outline-3">
-<h3 id="org494060c">Org-mode</h3>
-<div class="outline-text-3" id="text-org494060c">
+<div id="outline-container-orgfc1679f" class="outline-3">
+<h3 id="orgfc1679f">Org-mode</h3>
+<div class="outline-text-3" id="text-orgfc1679f">
 <p>
 Install org-mode first and configure it.
 </p>
@@ -202,7 +202,7 @@ Install org-mode first and configure it.
           (<span class="org-string">"mo"</span> <span class="org-string">"One-to-One"</span> entry (file+headline <span class="org-string">"~/org/work/one-one.org"</span> <span class="org-string">"NEXT"</span>)
            <span class="org-string">"* TODO %? :work:meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
           (<span class="org-string">"mt"</span> <span class="org-string">"Tech Screening"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
-           <span class="org-string">"* %? :work:meeting:\n%U\n  [[https://backmarket.atlassian.net/wiki/spaces/TRP/pages/2470641885/Backend+technical+screening][Reference]]\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
+           (file <span class="org-string">"~/org/templates/tech-screening.org"</span>) <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
 
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (shell . t) (C . t) (gnuplot . t)))
@@ -221,9 +221,9 @@ Install org-mode first and configure it.
 </div>
 </div>
 
-<div id="outline-container-orge657989" class="outline-3">
-<h3 id="orge657989">Install major modes</h3>
-<div class="outline-text-3" id="text-orge657989">
+<div id="outline-container-orgd2165bf" class="outline-3">
+<h3 id="orgd2165bf">Install major modes</h3>
+<div class="outline-text-3" id="text-orgd2165bf">
 <p>
 A few major modes I use.
 </p>
@@ -244,9 +244,9 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-orgd1d84aa" class="outline-3">
-<h3 id="orgd1d84aa">Theme</h3>
-<div class="outline-text-3" id="text-orgd1d84aa">
+<div id="outline-container-org5e7da52" class="outline-3">
+<h3 id="org5e7da52">Theme</h3>
+<div class="outline-text-3" id="text-org5e7da52">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
@@ -266,9 +266,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-orgc79a7cd" class="outline-3">
-<h3 id="orgc79a7cd">UI</h3>
-<div class="outline-text-3" id="text-orgc79a7cd">
+<div id="outline-container-org98771e9" class="outline-3">
+<h3 id="org98771e9">UI</h3>
+<div class="outline-text-3" id="text-org98771e9">
 <p>
 All UI related packages.
 </p>
@@ -383,9 +383,9 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-org2dca971" class="outline-3">
-<h3 id="org2dca971">Utilities</h3>
-<div class="outline-text-3" id="text-org2dca971">
+<div id="outline-container-org3285218" class="outline-3">
+<h3 id="org3285218">Utilities</h3>
+<div class="outline-text-3" id="text-org3285218">
 <p>
 Here are all utilities with no effect on UI.
 </p>
@@ -432,9 +432,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-orgffe02d4" class="outline-4">
-<h4 id="orgffe02d4">Vterm</h4>
-<div class="outline-text-4" id="text-orgffe02d4">
+<div id="outline-container-orgcd63cda" class="outline-4">
+<h4 id="orgcd63cda">Vterm</h4>
+<div class="outline-text-4" id="text-orgcd63cda">
 <p>
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 </p>
@@ -451,9 +451,9 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 </div>
 </div>
 
-<div id="outline-container-org60d6a97" class="outline-3">
-<h3 id="org60d6a97">Python setup</h3>
-<div class="outline-text-3" id="text-org60d6a97">
+<div id="outline-container-orgeb5d7f5" class="outline-3">
+<h3 id="orgeb5d7f5">Python setup</h3>
+<div class="outline-text-3" id="text-orgeb5d7f5">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
