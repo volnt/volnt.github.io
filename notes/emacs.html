@@ -20,38 +20,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdae3cf6">Emacs configuration</a>
+<li><a href="#orgd128058">Emacs configuration</a>
 <ul>
-<li><a href="#org68d4446">Boostrap straight.el</a></li>
-<li><a href="#org186fcf2">Custom file location</a></li>
-<li><a href="#orgc658e36">Update defaults</a></li>
-<li><a href="#org31290ad">Org-mode</a></li>
-<li><a href="#org2ba03c7">Install major modes</a></li>
-<li><a href="#org04b333b">Theme</a></li>
-<li><a href="#org0d8646f">UI</a></li>
-<li><a href="#org14b89c9">Utilities</a>
+<li><a href="#org00952d2">Boostrap straight.el</a></li>
+<li><a href="#org5370b39">Custom file location</a></li>
+<li><a href="#orgd52fcd0">Update defaults</a></li>
+<li><a href="#org494060c">Org-mode</a></li>
+<li><a href="#orge657989">Install major modes</a></li>
+<li><a href="#orgd1d84aa">Theme</a></li>
+<li><a href="#orgc79a7cd">UI</a></li>
+<li><a href="#org2dca971">Utilities</a>
 <ul>
-<li><a href="#org20c4121">Vterm</a></li>
+<li><a href="#orgffe02d4">Vterm</a></li>
 </ul>
 </li>
-<li><a href="#org525cfe9">Python setup</a></li>
+<li><a href="#org60d6a97">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdae3cf6" class="outline-2">
-<h2 id="orgdae3cf6">Emacs configuration</h2>
-<div class="outline-text-2" id="text-orgdae3cf6">
+<div id="outline-container-orgd128058" class="outline-2">
+<h2 id="orgd128058">Emacs configuration</h2>
+<div class="outline-text-2" id="text-orgd128058">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-org68d4446" class="outline-3">
-<h3 id="org68d4446">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-org68d4446">
+<div id="outline-container-org00952d2" class="outline-3">
+<h3 id="org00952d2">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-org00952d2">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
@@ -83,9 +83,9 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-org186fcf2" class="outline-3">
-<h3 id="org186fcf2">Custom file location</h3>
-<div class="outline-text-3" id="text-org186fcf2">
+<div id="outline-container-org5370b39" class="outline-3">
+<h3 id="org5370b39">Custom file location</h3>
+<div class="outline-text-3" id="text-org5370b39">
 <p>
 Set the custom file location.
 </p>
@@ -99,9 +99,9 @@ Set the custom file location.
 </div>
 </div>
 
-<div id="outline-container-orgc658e36" class="outline-3">
-<h3 id="orgc658e36">Update defaults</h3>
-<div class="outline-text-3" id="text-orgc658e36">
+<div id="outline-container-orgd52fcd0" class="outline-3">
+<h3 id="orgd52fcd0">Update defaults</h3>
+<div class="outline-text-3" id="text-orgd52fcd0">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
@@ -133,9 +133,9 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-org31290ad" class="outline-3">
-<h3 id="org31290ad">Org-mode</h3>
-<div class="outline-text-3" id="text-org31290ad">
+<div id="outline-container-org494060c" class="outline-3">
+<h3 id="org494060c">Org-mode</h3>
+<div class="outline-text-3" id="text-org494060c">
 <p>
 Install org-mode first and configure it.
 </p>
@@ -176,7 +176,7 @@ Install org-mode first and configure it.
         org-log-done 'time
         org-agenda-skip-scheduled-if-done t
         org-log-into-drawer t
-        org-agenda-files '(<span class="org-string">"~/org/tasks.org"</span> <span class="org-string">"~/org/keep.org"</span>)
+        org-agenda-files '(<span class="org-string">"~/org/tasks.org"</span> <span class="org-string">"~/org/keep.org"</span> <span class="org-string">"~/org/archives.org"</span>)
 
         <span class="org-comment-delimiter">;; </span><span class="org-comment">Refiling</span>
         org-refile-targets '((<span class="org-string">"~/org/archives.org"</span> <span class="org-builtin">:maxlevel</span> . 1)))
@@ -187,13 +187,25 @@ Install org-mode first and configure it.
         '((sequence <span class="org-string">"TODO(t!)"</span> <span class="org-string">"|"</span> <span class="org-string">"DONE(d!)"</span>)))
 
   (<span class="org-keyword">setq</span> org-capture-templates
-        '((<span class="org-string">"t"</span> <span class="org-string">"Todo entry."</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
-           <span class="org-string">"* TODO %?\n  %U\n  %a\n  %i"</span> <span class="org-builtin">:empty-lines</span> 1)
-          (<span class="org-string">"m"</span> <span class="org-string">"Meeting"</span> entry (file+olp+datetree <span class="org-string">"~/org/notes.org"</span>)
-           <span class="org-string">"* %&lt;%I:%M %p&gt; - %a :meetings:\n\n%?\n\n"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
+        '((<span class="org-string">"t"</span> <span class="org-string">"Todo Entries"</span>)
+          (<span class="org-string">"tt"</span> <span class="org-string">"Todo"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+           <span class="org-string">"* TODO %?\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"th"</span> <span class="org-string">"House entry."</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+           <span class="org-string">"* TODO %? :house:\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"tw"</span> <span class="org-string">"Work entry."</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+          <span class="org-string">"* TODO %? :work:\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"m"</span> <span class="org-string">"Meeting Entries"</span>)
+          (<span class="org-string">"mm"</span> <span class="org-string">"Meeting"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+           <span class="org-string">"* %? :meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"mw"</span> <span class="org-string">"Work Meeting"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+           <span class="org-string">"* %? :work:meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"mo"</span> <span class="org-string">"One-to-One"</span> entry (file+headline <span class="org-string">"~/org/work/one-one.org"</span> <span class="org-string">"NEXT"</span>)
+           <span class="org-string">"* TODO %? :work:meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"mt"</span> <span class="org-string">"Tech Screening"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+           <span class="org-string">"* %? :work:meeting:\n%U\n  [[https://backmarket.atlassian.net/wiki/spaces/TRP/pages/2470641885/Backend+technical+screening][Reference]]\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
 
   (org-babel-do-load-languages
-   'org-babel-load-languages '((python . t) (shell . t) (C . t)))
+   'org-babel-load-languages '((python . t) (shell . t) (C . t) (gnuplot . t)))
   (use-package org-superstar
     <span class="org-builtin">:hook</span> (org-mode . org-superstar-mode)
     <span class="org-builtin">:custom</span>
@@ -201,15 +213,17 @@ Install org-mode first and configure it.
     (org-superstar-headline-bullets-list '(<span class="org-string">"&#9673;"</span> <span class="org-string">"&#9675;"</span> <span class="org-string">"&#9679;"</span> <span class="org-string">"&#9675;"</span> <span class="org-string">"&#9679;"</span> <span class="org-string">"&#9675;"</span> <span class="org-string">"&#9679;"</span>)))
   (use-package org-tree-slide)
   (use-package org-present)
-  (use-package ox-jira))
+  (use-package ox-jira)
+  (straight-use-package '(org-contrib <span class="org-builtin">:includes</span> org-checklist))
+  (load <span class="org-string">"org-checklist"</span>))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2ba03c7" class="outline-3">
-<h3 id="org2ba03c7">Install major modes</h3>
-<div class="outline-text-3" id="text-org2ba03c7">
+<div id="outline-container-orge657989" class="outline-3">
+<h3 id="orge657989">Install major modes</h3>
+<div class="outline-text-3" id="text-orge657989">
 <p>
 A few major modes I use.
 </p>
@@ -217,6 +231,9 @@ A few major modes I use.
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Major modes</span>
 
+(use-package gnuplot
+  <span class="org-builtin">:config</span>
+  (use-package gnuplot-mode))
 (use-package lua-mode)
 (use-package typescript-mode)
 (use-package yaml-mode)
@@ -227,9 +244,9 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-org04b333b" class="outline-3">
-<h3 id="org04b333b">Theme</h3>
-<div class="outline-text-3" id="text-org04b333b">
+<div id="outline-container-orgd1d84aa" class="outline-3">
+<h3 id="orgd1d84aa">Theme</h3>
+<div class="outline-text-3" id="text-orgd1d84aa">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
@@ -249,9 +266,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-org0d8646f" class="outline-3">
-<h3 id="org0d8646f">UI</h3>
-<div class="outline-text-3" id="text-org0d8646f">
+<div id="outline-container-orgc79a7cd" class="outline-3">
+<h3 id="orgc79a7cd">UI</h3>
+<div class="outline-text-3" id="text-orgc79a7cd">
 <p>
 All UI related packages.
 </p>
@@ -366,9 +383,9 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-org14b89c9" class="outline-3">
-<h3 id="org14b89c9">Utilities</h3>
-<div class="outline-text-3" id="text-org14b89c9">
+<div id="outline-container-org2dca971" class="outline-3">
+<h3 id="org2dca971">Utilities</h3>
+<div class="outline-text-3" id="text-org2dca971">
 <p>
 Here are all utilities with no effect on UI.
 </p>
@@ -415,9 +432,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-org20c4121" class="outline-4">
-<h4 id="org20c4121">Vterm</h4>
-<div class="outline-text-4" id="text-org20c4121">
+<div id="outline-container-orgffe02d4" class="outline-4">
+<h4 id="orgffe02d4">Vterm</h4>
+<div class="outline-text-4" id="text-orgffe02d4">
 <p>
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 </p>
@@ -434,9 +451,9 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 </div>
 </div>
 
-<div id="outline-container-org525cfe9" class="outline-3">
-<h3 id="org525cfe9">Python setup</h3>
-<div class="outline-text-3" id="text-org525cfe9">
+<div id="outline-container-org60d6a97" class="outline-3">
+<h3 id="org60d6a97">Python setup</h3>
+<div class="outline-text-3" id="text-org60d6a97">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
@@ -473,6 +490,7 @@ Because Python is the language I use the most, I use more packages than just the
     <span class="org-builtin">:hook</span> (python-mode . (<span class="org-keyword">lambda</span> ()
                            (<span class="org-keyword">require</span> '<span class="org-constant">lsp-pyright</span>)
                            (lsp)))  <span class="org-comment-delimiter">; </span><span class="org-comment">or lsp-deferred</span>
+    <span class="org-builtin">:init</span> (<span class="org-keyword">setq</span> lsp-pyright-python-executable-cmd <span class="org-string">"python3.8"</span>)
     <span class="org-builtin">:bind-keymap</span> (<span class="org-string">"C-c C-o"</span> . lsp-command-map)
     <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c ;"</span> . xref-find-definitions)
            (<span class="org-string">"C-c ,"</span> . xref-pop-marker-stack)
