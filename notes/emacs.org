@@ -113,7 +113,7 @@ Install org-mode first and configure it.
         org-log-done 'time
         org-agenda-skip-scheduled-if-done t
         org-log-into-drawer t
-        org-agenda-files '("~/org/tasks.org" "~/org/keep.org")
+        org-agenda-files '("~/org/tasks.org" "~/org/keep.org" "~/org/archives.org")
 
         ;; Refiling
         org-refile-targets '(("~/org/archives.org" :maxlevel . 1)))
@@ -124,13 +124,25 @@ Install org-mode first and configure it.
         '((sequence "TODO(t!)" "|" "DONE(d!)")))
 
   (setq org-capture-templates
-        '(("t" "Todo entry." entry (file "~/org/tasks.org")
-           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
-          ("m" "Meeting" entry (file+olp+datetree "~/org/notes.org")
-           "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n" :clock-in :clock-resume :empty-lines 1)))
+        '(("t" "Todo Entries")
+          ("tt" "Todo" entry (file "~/org/tasks.org")
+           "* TODO %?\n%U\n%i" :empty-lines 1)
+          ("th" "House entry." entry (file "~/org/tasks.org")
+           "* TODO %? :house:\n%U\n%i" :empty-lines 1)
+          ("tw" "Work entry." entry (file "~/org/tasks.org")
+          "* TODO %? :work:\n%U\n%i" :empty-lines 1)
+          ("m" "Meeting Entries")
+          ("mm" "Meeting" entry (file "~/org/tasks.org")
+           "* %? :meeting:\n%U\n%i" :clock-in :clock-resume :empty-lines 1)
+          ("mw" "Work Meeting" entry (file "~/org/tasks.org")
+           "* %? :work:meeting:\n%U\n%i" :clock-in :clock-resume :empty-lines 1)
+          ("mo" "One-to-One" entry (file+headline "~/org/work/one-one.org" "NEXT")
+           "* TODO %? :work:meeting:\n%U\n%i" :clock-in :clock-resume :empty-lines 1)
+          ("mt" "Tech Screening" entry (file "~/org/tasks.org")
+           "* %? :work:meeting:\n%U\n  [[https://backmarket.atlassian.net/wiki/spaces/TRP/pages/2470641885/Backend+technical+screening][Reference]]\n%i" :clock-in :clock-resume :empty-lines 1)))
 
   (org-babel-do-load-languages
-   'org-babel-load-languages '((python . t) (shell . t) (C . t)))
+   'org-babel-load-languages '((python . t) (shell . t) (C . t) (gnuplot . t)))
   (use-package org-superstar
     :hook (org-mode . org-superstar-mode)
     :custom
@@ -138,7 +150,9 @@ Install org-mode first and configure it.
     (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
   (use-package org-tree-slide)
   (use-package org-present)
-  (use-package ox-jira))
+  (use-package ox-jira)
+  (straight-use-package '(org-contrib :includes org-checklist))
+  (load "org-checklist"))
 #+end_src
 
 ** Install major modes
@@ -147,6 +161,9 @@ A few major modes I use.
 #+begin_src elisp
 ;; Major modes
 
+(use-package gnuplot
+  :config
+  (use-package gnuplot-mode))
 (use-package lua-mode)
 (use-package typescript-mode)
 (use-package yaml-mode)
@@ -362,6 +379,7 @@ Because Python is the language I use the most, I use more packages than just the
     :hook (python-mode . (lambda ()
                            (require 'lsp-pyright)
                            (lsp)))  ; or lsp-deferred
+    :init (setq lsp-pyright-python-executable-cmd "python3.8")
     :bind-keymap ("C-c C-o" . lsp-command-map)
     :bind (("C-c ;" . xref-find-definitions)
            ("C-c ," . xref-pop-marker-stack)
