@@ -1,0 +1,31 @@
+#+title: Cherry clafoutis
+#+author: Florent Espanet
+#+date: <2022-05-09 Mon>
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Cherry clafoutis
+** Ingredients
+
+| Ingredient | Quantity |
+|------------+----------|
+| Cherries   | 500g     |
+| Butter     | 60g      |
+| Eggs       | 4        |
+| Milk       | 25cl     |
+| Floor      | 100g     |
+| Sugar      | 125g     |
+
+** Instructions
+
+- Pre-heat oven at 200°C
+- Melt the butter
+- In a large bowl:
+  - Scramble the eggs, add the sugar and keep scrambling until white-ish
+  - Add the floor, the butter, the milk and mix until smooth
+- Rinse the cherries and dry
+- Butter a pie dish
+- Add a thin (5mm) layer of batter at the bottom of the pie dish and bake for 5min
+- Add the cherries and the rest of the batter
+- Bake for 30-40min (a knife inserted in the middle of the pie should come out clean)
