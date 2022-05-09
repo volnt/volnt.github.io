@@ -4,9 +4,14 @@
 #+html_link_up: /
 #+author: Florent Espanet
 
-- Full-remote Software Engineer currently working at [[https://www.backmarket.com/][BackMarket]] 🧑‍💼
-- Previously managed a team of 15 Backend Engineers at [[https://www.lumapps.com][LumApps]] ([[https://www.openstreetmap.org/relation/120965][Lyon]]) 🧑‍💼
-- Find me here: [[https://www.linkedin.com/in/florentespanet][@@html:<span class="fa-brands fa-linkedin"></span>@@]] [[https://github.com/volnt][@@html:<span class="fa-brands fa-github"></span>@@]]
-- Published a 2d platformer on Steam: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]] 🎮
-- I write notes here: [[file:notes/][Notes]] 📝
-- I write recipes I want to remember here: [[file:recipes/][Recipes]] 🍲
+👋 Hello,
+
+here are a few facts about me:
+
+- Software Engineer working remotely for [[https://www.backmarket.com/][BackMarket 🧑‍💼]]
+- Previously managed a team of 15 Backend Engineers for [[https://www.lumapps.com][LumApps 🧑‍💼]]
+- Published a 2d platformer on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd 🎮]]
+
+I sometimes write some [[file:notes/][Tech notes 📝]], and also some [[file:recipes/][Recipes 🍲]] I want to remember.
+
+You can find me on [[https://www.linkedin.com/in/florentespanet][@@html:Linkedin <span class="fa-brands fa-linkedin"></span>@@]] and on [[https://github.com/volnt][@@html:Github <span class="fa-brands fa-github"></span>@@]].
