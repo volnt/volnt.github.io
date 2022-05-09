@@ -51,6 +51,23 @@
          :section-numbers nil
          :time-stamp-file nil)
 
+        ("recipes"
+         :auto-sitemap t
+         :sitemap-sort-files anti-chronologically
+         :sitemap-filename "index.org"
+         :sitemap-title "Recipes"
+         :sitemap-function (lambda (title list)
+                             (format "#+title: %s\n#+html_link_home: /\n#+html_link_up: /\n\n%s" title  (string-join (mapcar (lambda (el) (format "- %s" (car el))) (cdr list)) "\n")))
+         :base-directory "./recipes/"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "./public/recipes/"
+         :with-author nil
+         :with-date t
+         :with-creator t
+         :with-toc t
+         :section-numbers nil
+         :time-stamp-file nil)
+
         ("images"
          :base-directory "./images/"
          :base-extension "jpeg\\|jpg\\|gif\\|png"
