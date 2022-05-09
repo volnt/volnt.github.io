@@ -20,38 +20,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org01a527b">Emacs configuration</a>
+<li><a href="#orge1b7ece">Emacs configuration</a>
 <ul>
-<li><a href="#org3927b78">Boostrap straight.el</a></li>
-<li><a href="#org885da7d">Custom file location</a></li>
-<li><a href="#org210d4cf">Update defaults</a></li>
-<li><a href="#orgfc1679f">Org-mode</a></li>
-<li><a href="#orgd2165bf">Install major modes</a></li>
-<li><a href="#org5e7da52">Theme</a></li>
-<li><a href="#org98771e9">UI</a></li>
-<li><a href="#org3285218">Utilities</a>
+<li><a href="#org1a3b541">Boostrap straight.el</a></li>
+<li><a href="#org4f3ce1a">Custom file location</a></li>
+<li><a href="#org44c8d3a">Update defaults</a></li>
+<li><a href="#org56eeec7">Org-mode</a></li>
+<li><a href="#org0496dfa">Install major modes</a></li>
+<li><a href="#orgb4b7fd3">Theme</a></li>
+<li><a href="#org742f048">UI</a></li>
+<li><a href="#org326fbb3">Utilities</a>
 <ul>
-<li><a href="#orgcd63cda">Vterm</a></li>
+<li><a href="#org5bb233d">Vterm</a></li>
 </ul>
 </li>
-<li><a href="#orgeb5d7f5">Python setup</a></li>
+<li><a href="#org63fac33">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org01a527b" class="outline-2">
-<h2 id="org01a527b">Emacs configuration</h2>
-<div class="outline-text-2" id="text-org01a527b">
+<div id="outline-container-orge1b7ece" class="outline-2">
+<h2 id="orge1b7ece">Emacs configuration</h2>
+<div class="outline-text-2" id="text-orge1b7ece">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-org3927b78" class="outline-3">
-<h3 id="org3927b78">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-org3927b78">
+<div id="outline-container-org1a3b541" class="outline-3">
+<h3 id="org1a3b541">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-org1a3b541">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
@@ -83,9 +83,9 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-org885da7d" class="outline-3">
-<h3 id="org885da7d">Custom file location</h3>
-<div class="outline-text-3" id="text-org885da7d">
+<div id="outline-container-org4f3ce1a" class="outline-3">
+<h3 id="org4f3ce1a">Custom file location</h3>
+<div class="outline-text-3" id="text-org4f3ce1a">
 <p>
 Set the custom file location.
 </p>
@@ -99,9 +99,9 @@ Set the custom file location.
 </div>
 </div>
 
-<div id="outline-container-org210d4cf" class="outline-3">
-<h3 id="org210d4cf">Update defaults</h3>
-<div class="outline-text-3" id="text-org210d4cf">
+<div id="outline-container-org44c8d3a" class="outline-3">
+<h3 id="org44c8d3a">Update defaults</h3>
+<div class="outline-text-3" id="text-org44c8d3a">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
@@ -133,15 +133,75 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-orgfc1679f" class="outline-3">
-<h3 id="orgfc1679f">Org-mode</h3>
-<div class="outline-text-3" id="text-orgfc1679f">
+<div id="outline-container-org56eeec7" class="outline-3">
+<h3 id="org56eeec7">Org-mode</h3>
+<div class="outline-text-3" id="text-org56eeec7">
 <p>
 Install org-mode first and configure it.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Org-mode</span>
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">zin/since-state</span> (since todo-state <span class="org-type">&amp;optional</span> done all)
+  <span class="org-doc">"List Agenda items that are older than SINCE.</span>
+
+<span class="org-doc">TODO-STATE is a regexp for matching to TODO states.  It is provided to</span>
+<span class="org-doc">`</span><span class="org-doc"><span class="org-constant">zin/find-state</span></span><span class="org-doc">' to match inactive timestamps.</span>
+<span class="org-doc">SINCE is compared to the result of `</span><span class="org-doc"><span class="org-constant">zin/org-date-diff</span></span><span class="org-doc">'.  If</span>
+<span class="org-doc">`</span><span class="org-doc"><span class="org-constant">zin/org-date-diff</span></span><span class="org-doc">' is greater than SINCE, the entry is shown in the</span>
+<span class="org-doc">Agenda.</span>
+<span class="org-doc">Optional argument DONE allows for done and not-done headlines to be</span>
+<span class="org-doc">evaluated.  If DONE is non-nil, match completed tasks.</span>
+<span class="org-doc">Optional argument ALL is passed to `</span><span class="org-doc"><span class="org-constant">zin/find-state</span></span><span class="org-doc">' to specify whether</span>
+<span class="org-doc">to search for any possible match of STATE, or only in the most recent</span>
+<span class="org-doc">log entry."</span>
+  (<span class="org-keyword">let</span> ((next-headline (<span class="org-keyword">save-excursion</span> (<span class="org-keyword">or</span> (outline-next-heading) (point-max)))))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">If DONE is non-nil, look for done keywords, if nil look for not-done</span>
+    (<span class="org-keyword">if</span> (member (org-get-todo-state)
+                (<span class="org-keyword">if</span> done
+                    org-done-keywords
+                  org-not-done-keywords))
+        (<span class="org-keyword">let*</span> ((subtree-end (<span class="org-keyword">save-excursion</span> (org-end-of-subtree t)))
+               (subtree-valid (<span class="org-keyword">save-excursion</span>
+                               (forward-line 1)
+                               (<span class="org-keyword">if</span> (<span class="org-keyword">and</span> (&lt; (point) subtree-end)
+                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">Find the timestamp to test</span>
+                                        (zin/find-state todo-state subtree-end all))
+                                   (<span class="org-keyword">let</span> ((startpoint (point)))
+                                     (forward-word 3)
+                                     <span class="org-comment-delimiter">;; </span><span class="org-comment">Convert timestamp into days difference from today</span>
+                                     (zin/org-date-diff startpoint (point)))))))
+          (<span class="org-keyword">if</span> (<span class="org-keyword">or</span> (not subtree-valid)
+                  (&lt;= subtree-valid since))
+              next-headline
+            nil))
+      (<span class="org-keyword">or</span> next-headline (point-max)))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">zin/find-state</span> (state <span class="org-type">&amp;optional</span> end all)
+  <span class="org-doc">"Used to search through the logbook of subtrees.</span>
+
+<span class="org-doc">Tests to see if the first line of the logbook is a change of todo</span>
+<span class="org-doc">status to status STATE</span>
+<span class="org-doc">- Status \"STATE\" from ...</span>
+<span class="org-doc">The search brings the point to the start of YYYY-MM-DD in inactive timestamps.</span>
+
+<span class="org-doc">Optional argument END defines the point at which to stop searching.</span>
+<span class="org-doc">Optional argument ALL when non-nil specifies to look for any occurence</span>
+<span class="org-doc">of STATE in the subtree, not just in the most recent entry."</span>
+  (<span class="org-keyword">let</span> ((drawer (<span class="org-keyword">if</span> all <span class="org-string">""</span> <span class="org-string">":.*:\\W"</span> <span class="org-string">"CLOSED:"</span>)))
+    (<span class="org-keyword">or</span> (re-search-forward (concat drawer <span class="org-string">".*State \\\""</span> state <span class="org-string">"\\\"\\W+from.*\\["</span>) end t)
+        (re-search-forward (concat drawer <span class="org-string">".*\\["</span>) end t))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">zin/org-date-diff</span> (start end <span class="org-type">&amp;optional</span> compare)
+  <span class="org-doc">"Calculate difference between  selected timestamp to current date.</span>
+
+<span class="org-doc">The difference between the dates is calculated in days.</span>
+<span class="org-doc">START and END define the region within which the timestamp is found.</span>
+<span class="org-doc">Optional argument COMPARE allows for comparison to a specific date rather than to current date."</span>
+  (<span class="org-keyword">let*</span> ((start-date (<span class="org-keyword">if</span> compare compare (calendar-current-date))))
+    (- (calendar-absolute-from-gregorian start-date) (org-time-string-to-absolute (buffer-substring-no-properties start end)))
+    ))
 
 (use-package org
   <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c a"</span> . org-agenda-list)
@@ -176,7 +236,14 @@ Install org-mode first and configure it.
         org-log-done 'time
         org-agenda-skip-scheduled-if-done t
         org-log-into-drawer t
-        org-agenda-files '(<span class="org-string">"~/org/tasks.org"</span> <span class="org-string">"~/org/keep.org"</span> <span class="org-string">"~/org/archives.org"</span>)
+        org-agenda-files '(<span class="org-string">"~/org/work.org"</span> <span class="org-string">"~/org/keep.org"</span> <span class="org-string">"~/org/house.org"</span> <span class="org-string">"~/org/perso.org"</span>)
+
+        org-agenda-custom-commands '((<span class="org-string">"R"</span> <span class="org-string">"Tasks that were completed more than 14 days ago."</span> tags <span class="org-string">"-REFILE/"</span>
+               ((org-agenda-files '(<span class="org-string">"~/org/work.org"</span> <span class="org-string">"~/org/perso.org"</span> <span class="org-string">"~/org/house.org"</span>))
+                (org-agenda-overriding-header <span class="org-string">"Archivable tasks"</span>)
+                (org-agenda-skip-function '(zin/since-state 14 <span class="org-string">"\</span><span class="org-string"><span class="org-regexp-grouping-backslash">\</span></span><span class="org-string"><span class="org-warning"><span class="org-regexp-grouping-backslash">\</span></span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">DONE\</span><span class="org-string"><span class="org-regexp-grouping-backslash">\</span></span><span class="org-string"><span class="org-warning"><span class="org-regexp-grouping-backslash">\</span></span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">CANC\</span><span class="org-string"><span class="org-regexp-grouping-backslash">\</span></span><span class="org-string"><span class="org-warning"><span class="org-regexp-grouping-backslash">\</span></span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span> t)))))
+
+
 
         <span class="org-comment-delimiter">;; </span><span class="org-comment">Refiling</span>
         org-refile-targets '((<span class="org-string">"~/org/archives.org"</span> <span class="org-builtin">:maxlevel</span> . 1)))
@@ -188,21 +255,23 @@ Install org-mode first and configure it.
 
   (<span class="org-keyword">setq</span> org-capture-templates
         '((<span class="org-string">"t"</span> <span class="org-string">"Todo Entries"</span>)
-          (<span class="org-string">"tt"</span> <span class="org-string">"Todo"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+          (<span class="org-string">"tt"</span> <span class="org-string">"Todo"</span> entry (file <span class="org-string">"~/org/perso.org"</span>)
            <span class="org-string">"* TODO %?\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
-          (<span class="org-string">"th"</span> <span class="org-string">"House entry."</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+          (<span class="org-string">"th"</span> <span class="org-string">"House entry."</span> entry (file <span class="org-string">"~/org/house.org"</span>)
            <span class="org-string">"* TODO %? :house:\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
-          (<span class="org-string">"tw"</span> <span class="org-string">"Work entry."</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
-          <span class="org-string">"* TODO %? :work:\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"tw"</span> <span class="org-string">"Work entry."</span> entry (file <span class="org-string">"~/org/work.org"</span>)
+           <span class="org-string">"* TODO %? :work:\n%U\n%i"</span> <span class="org-builtin">:empty-lines</span> 1)
           (<span class="org-string">"m"</span> <span class="org-string">"Meeting Entries"</span>)
-          (<span class="org-string">"mm"</span> <span class="org-string">"Meeting"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+          (<span class="org-string">"mm"</span> <span class="org-string">"Meeting"</span> entry (file <span class="org-string">"~/org/perso.org"</span>)
            <span class="org-string">"* %? :meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
-          (<span class="org-string">"mw"</span> <span class="org-string">"Work Meeting"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
+          (<span class="org-string">"mw"</span> <span class="org-string">"Work Meeting"</span> entry (file <span class="org-string">"~/org/work.org"</span>)
            <span class="org-string">"* %? :work:meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
-          (<span class="org-string">"mo"</span> <span class="org-string">"One-to-One"</span> entry (file+headline <span class="org-string">"~/org/work/one-one.org"</span> <span class="org-string">"NEXT"</span>)
+          (<span class="org-string">"mo"</span> <span class="org-string">"One-to-One"</span> entry (file+headline <span class="org-string">"~/org/work.org"</span> <span class="org-string">"One-to-one"</span>)
            <span class="org-string">"* TODO %? :work:meeting:\n%U\n%i"</span> <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
-          (<span class="org-string">"mt"</span> <span class="org-string">"Tech Screening"</span> entry (file <span class="org-string">"~/org/tasks.org"</span>)
-           (file <span class="org-string">"~/org/templates/tech-screening.org"</span>) <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
+          (<span class="org-string">"mt"</span> <span class="org-string">"Tech Screening"</span> entry (file <span class="org-string">"~/org/work.org"</span>)
+           (file <span class="org-string">"~/org/templates/tech-screening.org"</span>) <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)
+          (<span class="org-string">"ml"</span> <span class="org-string">"ML Interview"</span> entry (file <span class="org-string">"~/org/work.org"</span>)
+           (file <span class="org-string">"~/org/templates/ml-engineer-screening.org"</span>) <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span> <span class="org-builtin">:empty-lines</span> 1)))
 
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (shell . t) (C . t) (gnuplot . t)))
@@ -211,8 +280,7 @@ Install org-mode first and configure it.
     <span class="org-builtin">:custom</span>
     (org-superstar-remove-leading-stars t)
     (org-superstar-headline-bullets-list '(<span class="org-string">"&#9673;"</span> <span class="org-string">"&#9675;"</span> <span class="org-string">"&#9679;"</span> <span class="org-string">"&#9675;"</span> <span class="org-string">"&#9679;"</span> <span class="org-string">"&#9675;"</span> <span class="org-string">"&#9679;"</span>)))
-  (use-package org-tree-slide)
-  (use-package org-present)
+  (use-package epresent)
   (use-package ox-jira)
   (straight-use-package '(org-contrib <span class="org-builtin">:includes</span> org-checklist))
   (load <span class="org-string">"org-checklist"</span>))
@@ -221,9 +289,9 @@ Install org-mode first and configure it.
 </div>
 </div>
 
-<div id="outline-container-orgd2165bf" class="outline-3">
-<h3 id="orgd2165bf">Install major modes</h3>
-<div class="outline-text-3" id="text-orgd2165bf">
+<div id="outline-container-org0496dfa" class="outline-3">
+<h3 id="org0496dfa">Install major modes</h3>
+<div class="outline-text-3" id="text-org0496dfa">
 <p>
 A few major modes I use.
 </p>
@@ -231,6 +299,7 @@ A few major modes I use.
 <div class="org-src-container">
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Major modes</span>
 
+(use-package ledger-mode)
 (use-package gnuplot
   <span class="org-builtin">:config</span>
   (use-package gnuplot-mode))
@@ -244,9 +313,9 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-org5e7da52" class="outline-3">
-<h3 id="org5e7da52">Theme</h3>
-<div class="outline-text-3" id="text-org5e7da52">
+<div id="outline-container-orgb4b7fd3" class="outline-3">
+<h3 id="orgb4b7fd3">Theme</h3>
+<div class="outline-text-3" id="text-orgb4b7fd3">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
@@ -266,9 +335,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-org98771e9" class="outline-3">
-<h3 id="org98771e9">UI</h3>
-<div class="outline-text-3" id="text-org98771e9">
+<div id="outline-container-org742f048" class="outline-3">
+<h3 id="org742f048">UI</h3>
+<div class="outline-text-3" id="text-org742f048">
 <p>
 All UI related packages.
 </p>
@@ -357,7 +426,9 @@ For code-completion use <code>company</code>.
   (marginalia-mode))
 
 (use-package company
-  <span class="org-builtin">:config</span> (global-company-mode)
+  <span class="org-builtin">:config</span>
+  (<span class="org-keyword">setq</span> company-global-modes '(not shell-mode))
+  (global-company-mode t)
   <span class="org-builtin">:bind</span> (<span class="org-builtin">:map</span> company-active-map (<span class="org-string">"&lt;tab&gt;"</span> . company-complete-selection))
   <span class="org-builtin">:custom</span>
   (company-minimum-prefix-length 1)
@@ -383,9 +454,9 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-org3285218" class="outline-3">
-<h3 id="org3285218">Utilities</h3>
-<div class="outline-text-3" id="text-org3285218">
+<div id="outline-container-org326fbb3" class="outline-3">
+<h3 id="org326fbb3">Utilities</h3>
+<div class="outline-text-3" id="text-org326fbb3">
 <p>
 Here are all utilities with no effect on UI.
 </p>
@@ -432,9 +503,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-orgcd63cda" class="outline-4">
-<h4 id="orgcd63cda">Vterm</h4>
-<div class="outline-text-4" id="text-orgcd63cda">
+<div id="outline-container-org5bb233d" class="outline-4">
+<h4 id="org5bb233d">Vterm</h4>
+<div class="outline-text-4" id="text-org5bb233d">
 <p>
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 </p>
@@ -451,9 +522,9 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 </div>
 </div>
 
-<div id="outline-container-orgeb5d7f5" class="outline-3">
-<h3 id="orgeb5d7f5">Python setup</h3>
-<div class="outline-text-3" id="text-orgeb5d7f5">
+<div id="outline-container-org63fac33" class="outline-3">
+<h3 id="org63fac33">Python setup</h3>
+<div class="outline-text-3" id="text-org63fac33">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
@@ -476,25 +547,24 @@ Because Python is the language I use the most, I use more packages than just the
   (use-package lsp-ui)
   (use-package lsp-treemacs))
 
-(use-package python-mode
-  <span class="org-builtin">:config</span>
-  (use-package py-isort
-    <span class="org-builtin">:custom</span> (py-isort-options '(<span class="org-string">"-w 120"</span>))
-    <span class="org-builtin">:hook</span> (before-save . py-isort-before-save))
+(use-package py-isort
+  <span class="org-builtin">:custom</span> (py-isort-options '(<span class="org-string">"-w 120"</span>))
+  <span class="org-builtin">:hook</span> (before-save . py-isort-before-save))
 
-  (use-package blacken
-    <span class="org-builtin">:hook</span> (python-mode . blacken-mode)
-    <span class="org-builtin">:custom</span> (blacken-line-length 120))
+(use-package blacken
+  <span class="org-builtin">:hook</span> (python-mode . blacken-mode)
+  <span class="org-builtin">:custom</span> (blacken-line-length 120))
 
-  (use-package lsp-pyright
-    <span class="org-builtin">:hook</span> (python-mode . (<span class="org-keyword">lambda</span> ()
-                           (<span class="org-keyword">require</span> '<span class="org-constant">lsp-pyright</span>)
-                           (lsp)))  <span class="org-comment-delimiter">; </span><span class="org-comment">or lsp-deferred</span>
-    <span class="org-builtin">:init</span> (<span class="org-keyword">setq</span> lsp-pyright-python-executable-cmd <span class="org-string">"python3.8"</span>)
-    <span class="org-builtin">:bind-keymap</span> (<span class="org-string">"C-c C-o"</span> . lsp-command-map)
-    <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c ;"</span> . xref-find-definitions)
-           (<span class="org-string">"C-c ,"</span> . xref-pop-marker-stack)
-           (<span class="org-string">"C-c :"</span> . lsp-find-references))))
+(use-package lsp-pyright
+  <span class="org-builtin">:hook</span> (python-mode . (<span class="org-keyword">lambda</span> ()
+                         (<span class="org-keyword">require</span> '<span class="org-constant">lsp-pyright</span>)
+                         (lsp)))  <span class="org-comment-delimiter">; </span><span class="org-comment">or lsp-deferred</span>
+  <span class="org-builtin">:init</span> (<span class="org-keyword">setq</span> lsp-pyright-python-executable-cmd <span class="org-string">"python3.8"</span>)
+  <span class="org-builtin">:config</span> (<span class="org-keyword">setq</span> lsp-pyright-disable-organize-imports t)
+  <span class="org-builtin">:bind-keymap</span> (<span class="org-string">"C-c C-o"</span> . lsp-command-map)
+  <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c ;"</span> . xref-find-definitions)
+         (<span class="org-string">"C-c ,"</span> . xref-pop-marker-stack)
+         (<span class="org-string">"C-c :"</span> . lsp-find-references)))
 </pre>
 </div>
 </div>
