@@ -1,0 +1,34 @@
+#+title: Cider Rabbit
+#+author: Florent Espanet
+#+date: [2022-05-09 Mon]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Cider Rabbit
+** Ingredients
+
+For 6 people:
+
+| Ingredient | Quantity |
+|------------+----------|
+| Rabbit     | 1        |
+| Onions     | 2        |
+| Lardons    | 100g     |
+| Bay leaf   | 1        |
+| Floor      | 100g     |
+| Butter     | 30g      |
+| Cider      | 1L       |
+| Salt       |          |
+| Pepper     |          |
+
+** Instructions
+
+- Cut up rabbit and dip in floor until all surfaces are lightly covered, add salt and pepper
+- Warm up a pot big enough for the whole rabbit, add the butter
+- Color the rabbit on all sides and remove the from the pot
+- Sauté the lardons and onion until translucent
+- Add the rabbit, the bay leaf and cover with cider
+- Cook for 45min
+- Season to taste
+- Serve with tagliatelle or rice
