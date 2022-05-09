@@ -620,7 +620,7 @@ body{
     background:#d6edff
 }
 dl,ol,p,ul{
-    margin:0 auto
+    margin:16 auto;
 }
 .title{
     margin:.8em auto;
