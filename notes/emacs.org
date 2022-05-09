@@ -191,7 +191,13 @@ Optional argument COMPARE allows for comparison to a specific date rather than t
         '((sequence "TODO(t!)" "|" "DONE(d!)")))
 
   (setq org-capture-templates
-        '(("t" "Todo Entries")
+        '(("s" "Site Entries")
+          ("sr" "Recipe" plain
+           (file (lambda () (expand-file-name (read-string "Filename: ") "~/dev/volnt.github.io/recipes/")))
+           (file "~/org/templates/recipe.org"))
+          ("sn" "Note" plain
+           (file (lambda () (expand-file-name (read-string "Filename: ") "~/dev/volnt.github.io/notes/"))))
+          ("t" "Todo Entries")
           ("tt" "Todo" entry (file "~/org/perso.org")
            "* TODO %?\n%U\n%i" :empty-lines 1)
           ("th" "House entry." entry (file "~/org/house.org")
