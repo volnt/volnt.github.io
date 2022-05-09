@@ -1,0 +1,24 @@
+#+title: Yogurt Cake
+#+author: Florent Espanet
+#+date: [2022-05-09 Mon]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Yogurt Cake
+** Ingredients
+
+| Ingredient  | Quantity   |
+|-------------+------------|
+| Yogourt     | 1 pot      |
+| Neutral oil | 1/2 pot    |
+| Sugar       | 1 pot      |
+| Floor       | 3 pots     |
+| Eggs        | 2          |
+| Baking soda | 1/2 packet |
+
+** Instructions
+
+- Pre-heat oven at 180°C
+- Mix everything until smooth
+- Bake for 30-40min
