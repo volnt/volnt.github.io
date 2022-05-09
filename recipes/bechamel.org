@@ -1,0 +1,26 @@
+#+title: Bechamel
+#+author: Florent Espanet
+#+date: [2022-05-09 Mon]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Bechamel
+** Ingredients
+
+| Ingredient | Quantity |
+|------------+----------|
+| Milk       | 1L       |
+| Butter     | 100g     |
+| Floor      | 100g     |
+| Salt       |          |
+| Pepper     |          |
+
+** Instructions
+
+- In a pot melt the butter
+- Add the floor and mix for 1-2min
+- Lower the heat to the minimum
+- Keep mixing add the milk 10cl~ at a time
+- Mix on low heat for a few more minutes until thick enough to stick to the mixing spoon
+- Add salt & pepper to taste
