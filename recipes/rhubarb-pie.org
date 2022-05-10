@@ -1,0 +1,27 @@
+#+title: Rhubarb Pie
+#+author: Florent Espanet
+#+date: [2022-05-10 Tue]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Rhubarb Pie
+** Ingredients
+
+| Ingredient | Quantity |
+|------------+----------|
+| Rhubarb    | 400g     |
+| Eggs       | 2        |
+| Cream      | 20cl     |
+| Sugar      | 75g      |
+| [[pie-dough.html][Pie Dough]]  | 1        |
+
+** Instructions
+
+- Wash, peel and cut the rhubarb in 1cm pieces
+- Mix the eggs, the cream and the sugar in a bowl
+- Spread the pie dough and put it in a pie dish
+- Make small holes on the dough with a fork
+- Spread the rhubarb at the bottom of the dough
+- Cover with the liquid eggs mixture
+- Bake for 45min at 180°C

@@ -1,0 +1,31 @@
+#+title: Pie Dough
+#+author: Florent Espanet
+#+date: [2022-05-10 Tue]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Pie Dough
+** Ingredients
+
+For 2 pie dough:
+
+| Ingredient | Quantity |
+|------------+----------|
+| Flour      | 250g     |
+| Butter     | 125g     |
+| Salt       | 2g       |
+| Sugar      | 25g      |
+| Water      | 5cl      |
+| Egg yolk   | 1        |
+
+** Instructions
+
+- In a mixer bowl:
+  - Add the flour
+  - Cut the butter in small cubes and add
+  - Mix until it has a sand consistency
+- Mix the sugar, the egg yolk, the water and the salt until smooth
+- Pour the liquid solution in the mixer all at once with the mixer stopped
+- Mix everything, in a few seconds it should all come together in a ball
+- Take the ball out, spread a little flour on top and refrigerate in plastic wrap
