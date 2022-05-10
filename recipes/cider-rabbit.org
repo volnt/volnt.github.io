@@ -16,7 +16,7 @@ For 6 people:
 | Onions     | 2        |
 | Lardons    | 100g     |
 | Bay leaf   | 1        |
-| Floor      | 100g     |
+| Flour      | 100g     |
 | Butter     | 30g      |
 | Cider      | 1L       |
 | Salt       |          |
@@ -24,7 +24,7 @@ For 6 people:
 
 ** Instructions
 
-- Cut up rabbit and dip in floor until all surfaces are lightly covered, add salt and pepper
+- Cut up rabbit and dip in flour until all surfaces are lightly covered, add salt and pepper
 - Warm up a pot big enough for the whole rabbit, add the butter
 - Color the rabbit on all sides and remove the from the pot
 - Sauté the lardons and onion until translucent
