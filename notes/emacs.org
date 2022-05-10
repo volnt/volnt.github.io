@@ -4,6 +4,7 @@
 #+html_link_home: /
 #+html_link_up: /notes/
 #+property: header-args :tangle ~/.emacs.d/init.el
+#+property: header-args :exports code
 
 * Emacs configuration
 Source for my Emacs configuration. The init.el file can be generated from this org file using ~org-babel-tangle~ ([[https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example][reference]]).
@@ -75,11 +76,14 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 | py-isort-before-save | delete-trailing-whitespace |
 
 ** Org-mode
-Install org-mode first and configure it.
+I use org-mode to organize my tasks, edit this website and write meeting notes and keep some long-term documentation.
+
+I have a few different files for tasks and I like to clean them up by removing old DONE tasks. My exact workflow is that I have a recurrent tasks every two weeks that reminds me to refile DONE tasks older than two weeks to an =archive.org= file.
+
+To automate this, a few custom functions are needed to find DONE tasks older than two weeks. (source: [[https://stackoverflow.com/a/8186450]])
+
 
 #+begin_src elisp
-;; Org-mode
-
 (defun zin/since-state (since todo-state &optional done all)
   "List Agenda items that are older than SINCE.
 
@@ -139,7 +143,15 @@ Optional argument COMPARE allows for comparison to a specific date rather than t
   (let* ((start-date (if compare compare (calendar-current-date))))
     (- (calendar-absolute-from-gregorian start-date) (org-time-string-to-absolute (buffer-substring-no-properties start end)))
     ))
+#+end_src
 
+In the org-mode configuration you can see references to files that are not part of this repository. The =org-agenda-files= and the =org-capture-templates= templates.
+
+I use capture templates to create new notes / recipes on this website. Each page is a different org file and for recipes there's a common template.
+
+There's also the =org-agenda-custom-commands= that uses the previously defined functions to refiles old DONE tasks.
+
+#+begin_src elisp
 (use-package org
   :bind (("C-c a" . org-agenda-list)
          ("C-c l" . org-store-link)
