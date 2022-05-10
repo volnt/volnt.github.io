@@ -1,0 +1,27 @@
+#+title: Lasagna
+#+author: Florent Espanet
+#+date: [2022-05-10 Tue]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Lasagna
+** Ingredients
+
+For 4 people:
+
+| Ingredient      | Quantity |
+|-----------------+----------|
+| [[file:bechamel.org][Bechamel]]        | 50cl     |
+| [[file:bolognese.org][Bolognese]]       | 50cl     |
+| Lasagna pasta   | 250g     |
+| Emmental cheese | 100g     |
+
+** Instructions
+
+- Pre-heat oven at 210°C
+- Prepare the bechamel and the bolognese
+- In an oven dish, create layers until the top of the dish with bolognese < pasta < bechamel < pasta
+- The very bottom layer should be bolognese and the very top layer should be bechamel
+- Top with grated emmental cheese
+- Put in the oven for 45min

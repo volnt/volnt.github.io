@@ -1,0 +1,37 @@
+#+title: Bolognese
+#+author: Florent Espanet
+#+date: [2022-05-10 Tue]
+#+html_link_home: /
+#+html_link_up: /recipes/
+
+
+* Bolognese
+** Ingredients
+
+| Ingredient   | Quantity |
+|--------------+----------|
+| Ground beef  | 500g     |
+| Olive oil    | 4cl      |
+| Tomato cans  | 2        |
+| Carrot       | 1        |
+| Celery stalk | 2        |
+| Onion        | 2        |
+| Parsley      | 4 sprigs |
+| Thyme        | 1 sprig  |
+| Bay leaf     | 1        |
+| Garlic       | 2 cloves |
+
+** Instructions
+
+- Tie the parsley, thyme and bay leaf together
+- Cut the vegetables in small cubes
+- Put a large pot on high heat
+- When hot add the olive oil and the ground beef
+- Add salt and pepper and stir until the meat is all brown
+- Remove the meat from the pot, put it aside
+- On low heat, add the vegetables and stir for 5min, there should be no coloring and no browning
+- Add salt and pepper
+- Add the tomato cans, fill one of the cans with water and add it to the pot too
+- Add the bouquet garni
+- Add the meat
+- Increase the heat until it boils and then cover and put on very low heat for at least 1h (best 2h)
