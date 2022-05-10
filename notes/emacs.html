@@ -20,38 +20,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4261c05">Emacs configuration</a>
+<li><a href="#orgd2c1484">Emacs configuration</a>
 <ul>
-<li><a href="#orgfa80ab0">Boostrap straight.el</a></li>
-<li><a href="#org14af570">Custom file location</a></li>
-<li><a href="#org9dd5f84">Update defaults</a></li>
-<li><a href="#org09aff5e">Org-mode</a></li>
-<li><a href="#orgc4a9891">Install major modes</a></li>
-<li><a href="#org4f0db1e">Theme</a></li>
-<li><a href="#org396588c">UI</a></li>
-<li><a href="#org22e7d3a">Utilities</a>
+<li><a href="#org1ffd3b1">Boostrap straight.el</a></li>
+<li><a href="#orgf203e60">Custom file location</a></li>
+<li><a href="#org880fd16">Update defaults</a></li>
+<li><a href="#org6a6dc3f">Org-mode</a></li>
+<li><a href="#org5c842e7">Install major modes</a></li>
+<li><a href="#org03162b1">Theme</a></li>
+<li><a href="#org8a7deaf">UI</a></li>
+<li><a href="#orga556b38">Utilities</a>
 <ul>
-<li><a href="#org6fffd70">Vterm</a></li>
+<li><a href="#orgd8305f4">Vterm</a></li>
 </ul>
 </li>
-<li><a href="#orge5e2abe">Python setup</a></li>
+<li><a href="#orgf9167d1">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4261c05" class="outline-2">
-<h2 id="org4261c05">Emacs configuration</h2>
-<div class="outline-text-2" id="text-org4261c05">
+<div id="outline-container-orgd2c1484" class="outline-2">
+<h2 id="orgd2c1484">Emacs configuration</h2>
+<div class="outline-text-2" id="text-orgd2c1484">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-orgfa80ab0" class="outline-3">
-<h3 id="orgfa80ab0">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-orgfa80ab0">
+<div id="outline-container-org1ffd3b1" class="outline-3">
+<h3 id="org1ffd3b1">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-org1ffd3b1">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
@@ -83,9 +83,9 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-org14af570" class="outline-3">
-<h3 id="org14af570">Custom file location</h3>
-<div class="outline-text-3" id="text-org14af570">
+<div id="outline-container-orgf203e60" class="outline-3">
+<h3 id="orgf203e60">Custom file location</h3>
+<div class="outline-text-3" id="text-orgf203e60">
 <p>
 Set the custom file location.
 </p>
@@ -99,9 +99,9 @@ Set the custom file location.
 </div>
 </div>
 
-<div id="outline-container-org9dd5f84" class="outline-3">
-<h3 id="org9dd5f84">Update defaults</h3>
-<div class="outline-text-3" id="text-org9dd5f84">
+<div id="outline-container-org880fd16" class="outline-3">
+<h3 id="org880fd16">Update defaults</h3>
+<div class="outline-text-3" id="text-org880fd16">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
@@ -133,17 +133,24 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-org09aff5e" class="outline-3">
-<h3 id="org09aff5e">Org-mode</h3>
-<div class="outline-text-3" id="text-org09aff5e">
+<div id="outline-container-org6a6dc3f" class="outline-3">
+<h3 id="org6a6dc3f">Org-mode</h3>
+<div class="outline-text-3" id="text-org6a6dc3f">
 <p>
-Install org-mode first and configure it.
+I use org-mode to organize my tasks, edit this website and write meeting notes and keep some long-term documentation.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Org-mode</span>
+<p>
+I have a few different files for tasks and I like to clean them up by removing old DONE tasks. My exact workflow is that I have a recurrent tasks every two weeks that reminds me to refile DONE tasks older than two weeks to an <code>archive.org</code> file.
+</p>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">zin/since-state</span> (since todo-state <span class="org-type">&amp;optional</span> done all)
+<p>
+To automate this, a few custom functions are needed to find DONE tasks older than two weeks. (source: <a href="https://stackoverflow.com/a/8186450">https://stackoverflow.com/a/8186450</a>)
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-keyword">defun</span> <span class="org-function-name">zin/since-state</span> (since todo-state <span class="org-type">&amp;optional</span> done all)
   <span class="org-doc">"List Agenda items that are older than SINCE.</span>
 
 <span class="org-doc">TODO-STATE is a regexp for matching to TODO states.  It is provided to</span>
@@ -202,8 +209,23 @@ Install org-mode first and configure it.
   (<span class="org-keyword">let*</span> ((start-date (<span class="org-keyword">if</span> compare compare (calendar-current-date))))
     (- (calendar-absolute-from-gregorian start-date) (org-time-string-to-absolute (buffer-substring-no-properties start end)))
     ))
+</pre>
+</div>
 
-(use-package org
+<p>
+In the org-mode configuration you can see references to files that are not part of this repository. The <code>org-agenda-files</code> and the <code>org-capture-templates</code> templates.
+</p>
+
+<p>
+I use capture templates to create new notes / recipes on this website. Each page is a different org file and for recipes there's a common template.
+</p>
+
+<p>
+There's also the <code>org-agenda-custom-commands</code> that uses the previously defined functions to refiles old DONE tasks.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package org
   <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c a"</span> . org-agenda-list)
          (<span class="org-string">"C-c l"</span> . org-store-link)
          (<span class="org-string">"C-c c"</span> . org-capture))
@@ -295,9 +317,9 @@ Install org-mode first and configure it.
 </div>
 </div>
 
-<div id="outline-container-orgc4a9891" class="outline-3">
-<h3 id="orgc4a9891">Install major modes</h3>
-<div class="outline-text-3" id="text-orgc4a9891">
+<div id="outline-container-org5c842e7" class="outline-3">
+<h3 id="org5c842e7">Install major modes</h3>
+<div class="outline-text-3" id="text-org5c842e7">
 <p>
 A few major modes I use.
 </p>
@@ -319,9 +341,9 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-org4f0db1e" class="outline-3">
-<h3 id="org4f0db1e">Theme</h3>
-<div class="outline-text-3" id="text-org4f0db1e">
+<div id="outline-container-org03162b1" class="outline-3">
+<h3 id="org03162b1">Theme</h3>
+<div class="outline-text-3" id="text-org03162b1">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
@@ -341,9 +363,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-org396588c" class="outline-3">
-<h3 id="org396588c">UI</h3>
-<div class="outline-text-3" id="text-org396588c">
+<div id="outline-container-org8a7deaf" class="outline-3">
+<h3 id="org8a7deaf">UI</h3>
+<div class="outline-text-3" id="text-org8a7deaf">
 <p>
 All UI related packages.
 </p>
@@ -460,9 +482,9 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-org22e7d3a" class="outline-3">
-<h3 id="org22e7d3a">Utilities</h3>
-<div class="outline-text-3" id="text-org22e7d3a">
+<div id="outline-container-orga556b38" class="outline-3">
+<h3 id="orga556b38">Utilities</h3>
+<div class="outline-text-3" id="text-orga556b38">
 <p>
 Here are all utilities with no effect on UI.
 </p>
@@ -509,9 +531,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-org6fffd70" class="outline-4">
-<h4 id="org6fffd70">Vterm</h4>
-<div class="outline-text-4" id="text-org6fffd70">
+<div id="outline-container-orgd8305f4" class="outline-4">
+<h4 id="orgd8305f4">Vterm</h4>
+<div class="outline-text-4" id="text-orgd8305f4">
 <p>
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 </p>
@@ -528,9 +550,9 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 </div>
 </div>
 
-<div id="outline-container-orge5e2abe" class="outline-3">
-<h3 id="orge5e2abe">Python setup</h3>
-<div class="outline-text-3" id="text-orge5e2abe">
+<div id="outline-container-orgf9167d1" class="outline-3">
+<h3 id="orgf9167d1">Python setup</h3>
+<div class="outline-text-3" id="text-orgf9167d1">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
