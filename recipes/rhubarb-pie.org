@@ -14,7 +14,7 @@
 | Eggs       | 2        |
 | Cream      | 20cl     |
 | Sugar      | 75g      |
-| [[/recipes/pie-dough.html][Pie Dough]]  | 1        |
+| [[file:pie-dough.org][Pie Dough]]  | 1        |
 
 ** Instructions
 
