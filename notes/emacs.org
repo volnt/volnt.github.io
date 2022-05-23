@@ -190,7 +190,7 @@ There's also the =org-agenda-custom-commands= that uses the previously defined f
         org-agenda-custom-commands '(("R" "Tasks that were completed more than 14 days ago." tags "-REFILE/"
                ((org-agenda-files '("~/org/work.org" "~/org/perso.org" "~/org/house.org"))
                 (org-agenda-overriding-header "Archivable tasks")
-                (org-agenda-skip-function '(zin/since-state 14 "\\\(DONE\\\|CANC\\\)" t)))))
+                (org-agenda-skip-function '(zin/since-state 14 "\\\(DONE\\\|CANCELED\\\)" t)))))
 
 
 
