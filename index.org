@@ -8,7 +8,9 @@
 
 here are a few facts about me:
 
-- Software Engineer working remotely for [[https://www.backmarket.com/][BackMarket 🧑‍💼]]
+
+- Software Engineer working remotely for Datadog
+- Previously working remotely for [[https://www.backmarket.com/][BackMarket 🧑‍💼]]
 - Previously managed a team of 15 Backend Engineers for [[https://www.lumapps.com][LumApps 🧑‍💼]]
 - Published a 2d platformer on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd 🎮]]
 
