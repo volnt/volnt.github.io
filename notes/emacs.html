@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs configuration</title>
-<meta name="generator" content="Org mode" />
+<meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="/css/org.css" /> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css">
 </head>
 <body>
@@ -14,44 +14,44 @@
  <a accesskey="h" href="/notes/"> UP </a>
  |
  <a accesskey="H" href="/"> HOME </a>
-</div><div id="content">
+</div><div id="content" class="content">
 <h1 class="title">Emacs configuration</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4166dc7">Emacs configuration</a>
+<li><a href="#orgf92c3a5">Emacs configuration</a>
 <ul>
-<li><a href="#org6e39b55">Boostrap straight.el</a></li>
-<li><a href="#orgbedf616">Custom file location</a></li>
-<li><a href="#org95ed8f1">Update defaults</a></li>
-<li><a href="#orgbb88f23">Org-mode</a></li>
-<li><a href="#org6646a3e">Install major modes</a></li>
-<li><a href="#orgf33bb66">Theme</a></li>
-<li><a href="#org04510b5">UI</a></li>
-<li><a href="#orgd4dc012">Utilities</a>
+<li><a href="#orgf24d366">Boostrap straight.el</a></li>
+<li><a href="#orgdf295b5">Custom file location</a></li>
+<li><a href="#orgef86fe6">Update defaults</a></li>
+<li><a href="#org836d912">Org-mode</a></li>
+<li><a href="#org719ae55">Install major modes</a></li>
+<li><a href="#org4c8ba19">Theme</a></li>
+<li><a href="#orgfeec51f">UI</a></li>
+<li><a href="#orgae3b139">Utilities</a>
 <ul>
-<li><a href="#org756d00d">Vterm</a></li>
+<li><a href="#orgc28647d">Vterm</a></li>
 </ul>
 </li>
-<li><a href="#org839a1a2">Python setup</a></li>
+<li><a href="#org10431ec">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4166dc7" class="outline-2">
-<h2 id="org4166dc7">Emacs configuration</h2>
-<div class="outline-text-2" id="text-org4166dc7">
+<div id="outline-container-orgf92c3a5" class="outline-2">
+<h2 id="orgf92c3a5">Emacs configuration</h2>
+<div class="outline-text-2" id="text-orgf92c3a5">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-org6e39b55" class="outline-3">
-<h3 id="org6e39b55">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-org6e39b55">
+<div id="outline-container-orgf24d366" class="outline-3">
+<h3 id="orgf24d366">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-orgf24d366">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
@@ -83,9 +83,9 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-orgbedf616" class="outline-3">
-<h3 id="orgbedf616">Custom file location</h3>
-<div class="outline-text-3" id="text-orgbedf616">
+<div id="outline-container-orgdf295b5" class="outline-3">
+<h3 id="orgdf295b5">Custom file location</h3>
+<div class="outline-text-3" id="text-orgdf295b5">
 <p>
 Set the custom file location.
 </p>
@@ -99,9 +99,9 @@ Set the custom file location.
 </div>
 </div>
 
-<div id="outline-container-org95ed8f1" class="outline-3">
-<h3 id="org95ed8f1">Update defaults</h3>
-<div class="outline-text-3" id="text-org95ed8f1">
+<div id="outline-container-orgef86fe6" class="outline-3">
+<h3 id="orgef86fe6">Update defaults</h3>
+<div class="outline-text-3" id="text-orgef86fe6">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
@@ -133,9 +133,9 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-orgbb88f23" class="outline-3">
-<h3 id="orgbb88f23">Org-mode</h3>
-<div class="outline-text-3" id="text-orgbb88f23">
+<div id="outline-container-org836d912" class="outline-3">
+<h3 id="org836d912">Org-mode</h3>
+<div class="outline-text-3" id="text-org836d912">
 <p>
 I use org-mode to organize my tasks, edit this website and write meeting notes and keep some long-term documentation.
 </p>
@@ -317,9 +317,9 @@ There's also the <code>org-agenda-custom-commands</code> that uses the previousl
 </div>
 </div>
 
-<div id="outline-container-org6646a3e" class="outline-3">
-<h3 id="org6646a3e">Install major modes</h3>
-<div class="outline-text-3" id="text-org6646a3e">
+<div id="outline-container-org719ae55" class="outline-3">
+<h3 id="org719ae55">Install major modes</h3>
+<div class="outline-text-3" id="text-org719ae55">
 <p>
 A few major modes I use.
 </p>
@@ -341,9 +341,9 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-orgf33bb66" class="outline-3">
-<h3 id="orgf33bb66">Theme</h3>
-<div class="outline-text-3" id="text-orgf33bb66">
+<div id="outline-container-org4c8ba19" class="outline-3">
+<h3 id="org4c8ba19">Theme</h3>
+<div class="outline-text-3" id="text-org4c8ba19">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
@@ -363,9 +363,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-org04510b5" class="outline-3">
-<h3 id="org04510b5">UI</h3>
-<div class="outline-text-3" id="text-org04510b5">
+<div id="outline-container-orgfeec51f" class="outline-3">
+<h3 id="orgfeec51f">UI</h3>
+<div class="outline-text-3" id="text-orgfeec51f">
 <p>
 All UI related packages.
 </p>
@@ -482,9 +482,9 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd4dc012" class="outline-3">
-<h3 id="orgd4dc012">Utilities</h3>
-<div class="outline-text-3" id="text-orgd4dc012">
+<div id="outline-container-orgae3b139" class="outline-3">
+<h3 id="orgae3b139">Utilities</h3>
+<div class="outline-text-3" id="text-orgae3b139">
 <p>
 Here are all utilities with no effect on UI.
 </p>
@@ -531,9 +531,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-org756d00d" class="outline-4">
-<h4 id="org756d00d">Vterm</h4>
-<div class="outline-text-4" id="text-org756d00d">
+<div id="outline-container-orgc28647d" class="outline-4">
+<h4 id="orgc28647d">Vterm</h4>
+<div class="outline-text-4" id="text-orgc28647d">
 <p>
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 </p>
@@ -550,9 +550,9 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 </div>
 </div>
 
-<div id="outline-container-org839a1a2" class="outline-3">
-<h3 id="org839a1a2">Python setup</h3>
-<div class="outline-text-3" id="text-org839a1a2">
+<div id="outline-container-org10431ec" class="outline-3">
+<h3 id="org10431ec">Python setup</h3>
+<div class="outline-text-3" id="text-org10431ec">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
@@ -601,7 +601,7 @@ Because Python is the language I use the most, I use more packages than just the
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-03-28 Mon 13:38</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.1 (<a href="https://orgmode.org">Org</a> mode 9.5.2)</p>
 </div>
 </body>
 </html>
