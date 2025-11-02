@@ -20,48 +20,48 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf92c3a5">Emacs configuration</a>
+<li><a href="#org7c94522">Emacs configuration</a>
 <ul>
-<li><a href="#orgf24d366">Boostrap straight.el</a></li>
-<li><a href="#orgdf295b5">Custom file location</a></li>
-<li><a href="#orgef86fe6">Update defaults</a></li>
-<li><a href="#org836d912">Org-mode</a></li>
-<li><a href="#org719ae55">Install major modes</a></li>
-<li><a href="#org4c8ba19">Theme</a></li>
-<li><a href="#orgfeec51f">UI</a></li>
-<li><a href="#orgae3b139">Utilities</a>
+<li><a href="#orgd9f6964">Boostrap straight.el</a></li>
+<li><a href="#orge5ccd32">Custom file location</a></li>
+<li><a href="#org78ebf83">Update defaults</a></li>
+<li><a href="#orgb824d86">Org-mode</a></li>
+<li><a href="#org1b4d4a4">Install major modes</a></li>
+<li><a href="#orga444549">Theme</a></li>
+<li><a href="#orgc4dea9b">UI</a></li>
+<li><a href="#org02a6834">Utilities</a>
 <ul>
-<li><a href="#orgc28647d">Vterm</a></li>
+<li><a href="#orgb5647e2">Vterm</a></li>
 </ul>
 </li>
-<li><a href="#org10431ec">Python setup</a></li>
+<li><a href="#org2be7727">Python setup</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf92c3a5" class="outline-2">
-<h2 id="orgf92c3a5">Emacs configuration</h2>
-<div class="outline-text-2" id="text-orgf92c3a5">
+<div id="outline-container-org7c94522" class="outline-2">
+<h2 id="org7c94522">Emacs configuration</h2>
+<div class="outline-text-2" id="text-org7c94522">
 <p>
 Source for my Emacs configuration. The init.el file can be generated from this org file using <code>org-babel-tangle</code> (<a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming-example">reference</a>).
 </p>
 </div>
 
-<div id="outline-container-orgf24d366" class="outline-3">
-<h3 id="orgf24d366">Boostrap straight.el</h3>
-<div class="outline-text-3" id="text-orgf24d366">
+<div id="outline-container-orgd9f6964" class="outline-3">
+<h3 id="orgd9f6964">Boostrap straight.el</h3>
+<div class="outline-text-3" id="text-orgd9f6964">
 <p>
 Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <code>use-package</code> form to install and manage emacs packages.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Disable emacs default package.el (in favor of straight.el)</span>
-(<span class="org-keyword">setq</span> package-enable-at-startup nil)
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Disable emacs default package.el (in favor of straight.el)
+</span>(<span class="org-keyword">setq</span> package-enable-at-startup nil)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Bootstrap straight.el</span>
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">bootstrap-version</span>)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Bootstrap straight.el
+</span>(<span class="org-keyword">defvar</span> <span class="org-variable-name">bootstrap-version</span>)
 (<span class="org-keyword">let</span> ((bootstrap-file
        (expand-file-name <span class="org-string">"straight/repos/straight.el/bootstrap.el"</span> user-emacs-directory))
       (bootstrap-version 5))
@@ -74,8 +74,8 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package) <span class="org-comment-delimiter">;; </span><span class="org-comment">Use the use-package form to install define packages</span>
-
+(straight-use-package 'use-package) <span class="org-comment-delimiter">;; </span><span class="org-comment">Use the use-package form to install define packages
+</span>
 (use-package straight
   <span class="org-builtin">:custom</span> (straight-use-package-by-default t)) <span class="org-comment-delimiter">;; </span><span class="org-comment">Make :straight t the default to ensure packages are installed</span>
 </pre>
@@ -83,31 +83,31 @@ Use <a href="https://github.com/raxod502/straight.el">straight.el</a> with the <
 </div>
 </div>
 
-<div id="outline-container-orgdf295b5" class="outline-3">
-<h3 id="orgdf295b5">Custom file location</h3>
-<div class="outline-text-3" id="text-orgdf295b5">
+<div id="outline-container-orge5ccd32" class="outline-3">
+<h3 id="orge5ccd32">Custom file location</h3>
+<div class="outline-text-3" id="text-orge5ccd32">
 <p>
 Set the custom file location.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Set custom file location</span>
-(<span class="org-keyword">setq</span> custom-file <span class="org-string">"~/.emacs.d/custom.el"</span>)
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Set custom file location
+</span>(<span class="org-keyword">setq</span> custom-file <span class="org-string">"~/.emacs.d/custom.el"</span>)
 (load custom-file)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgef86fe6" class="outline-3">
-<h3 id="orgef86fe6">Update defaults</h3>
-<div class="outline-text-3" id="text-orgef86fe6">
+<div id="outline-container-org78ebf83" class="outline-3">
+<h3 id="org78ebf83">Update defaults</h3>
+<div class="outline-text-3" id="text-org78ebf83">
 <p>
 Update a few defaults like the menu-bar, scroll-bar etc.
 </p>
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Remove menu, scroll bars and other visual things</span>
-(menu-bar-mode -1)
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Remove menu, scroll bars and other visual things
+</span>(menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (<span class="org-keyword">setq</span> column-number-mode nil)
@@ -119,8 +119,8 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 
 (global-display-line-numbers-mode t)
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Disable line numbers for some modes</span>
-(<span class="org-keyword">dolist</span> (mode '(org-mode-hook
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Disable line numbers for some modes
+</span>(<span class="org-keyword">dolist</span> (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
                 treemacs-mode-hook
@@ -133,9 +133,9 @@ Update a few defaults like the menu-bar, scroll-bar etc.
 </div>
 </div>
 
-<div id="outline-container-org836d912" class="outline-3">
-<h3 id="org836d912">Org-mode</h3>
-<div class="outline-text-3" id="text-org836d912">
+<div id="outline-container-orgb824d86" class="outline-3">
+<h3 id="orgb824d86">Org-mode</h3>
+<div class="outline-text-3" id="text-orgb824d86">
 <p>
 I use org-mode to organize my tasks, edit this website and write meeting notes and keep some long-term documentation.
 </p>
@@ -151,21 +151,21 @@ To automate this, a few custom functions are needed to find DONE tasks older tha
 
 <div class="org-src-container">
 <pre class="src src-elisp">(<span class="org-keyword">defun</span> <span class="org-function-name">zin/since-state</span> (since todo-state <span class="org-type">&amp;optional</span> done all)
-  <span class="org-doc">"List Agenda items that are older than SINCE.</span>
+  <span class="org-doc">"List Agenda items that are older than SINCE.
 
-<span class="org-doc">TODO-STATE is a regexp for matching to TODO states.  It is provided to</span>
-<span class="org-doc">`</span><span class="org-doc"><span class="org-constant">zin/find-state</span></span><span class="org-doc">' to match inactive timestamps.</span>
-<span class="org-doc">SINCE is compared to the result of `</span><span class="org-doc"><span class="org-constant">zin/org-date-diff</span></span><span class="org-doc">'.  If</span>
-<span class="org-doc">`</span><span class="org-doc"><span class="org-constant">zin/org-date-diff</span></span><span class="org-doc">' is greater than SINCE, the entry is shown in the</span>
-<span class="org-doc">Agenda.</span>
-<span class="org-doc">Optional argument DONE allows for done and not-done headlines to be</span>
-<span class="org-doc">evaluated.  If DONE is non-nil, match completed tasks.</span>
-<span class="org-doc">Optional argument ALL is passed to `</span><span class="org-doc"><span class="org-constant">zin/find-state</span></span><span class="org-doc">' to specify whether</span>
-<span class="org-doc">to search for any possible match of STATE, or only in the most recent</span>
-<span class="org-doc">log entry."</span>
+TODO-STATE is a regexp for matching to TODO states.  It is provided to
+`</span><span class="org-doc"><span class="org-constant">zin/find-state</span></span><span class="org-doc">' to match inactive timestamps.
+SINCE is compared to the result of `</span><span class="org-doc"><span class="org-constant">zin/org-date-diff</span></span><span class="org-doc">'.  If
+`</span><span class="org-doc"><span class="org-constant">zin/org-date-diff</span></span><span class="org-doc">' is greater than SINCE, the entry is shown in the
+Agenda.
+Optional argument DONE allows for done and not-done headlines to be
+evaluated.  If DONE is non-nil, match completed tasks.
+Optional argument ALL is passed to `</span><span class="org-doc"><span class="org-constant">zin/find-state</span></span><span class="org-doc">' to specify whether
+to search for any possible match of STATE, or only in the most recent
+log entry."</span>
   (<span class="org-keyword">let</span> ((next-headline (<span class="org-keyword">save-excursion</span> (<span class="org-keyword">or</span> (outline-next-heading) (point-max)))))
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">If DONE is non-nil, look for done keywords, if nil look for not-done</span>
-    (<span class="org-keyword">if</span> (member (org-get-todo-state)
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">If DONE is non-nil, look for done keywords, if nil look for not-done
+</span>    (<span class="org-keyword">if</span> (member (org-get-todo-state)
                 (<span class="org-keyword">if</span> done
                     org-done-keywords
                   org-not-done-keywords))
@@ -173,12 +173,12 @@ To automate this, a few custom functions are needed to find DONE tasks older tha
                (subtree-valid (<span class="org-keyword">save-excursion</span>
                                (forward-line 1)
                                (<span class="org-keyword">if</span> (<span class="org-keyword">and</span> (&lt; (point) subtree-end)
-                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">Find the timestamp to test</span>
-                                        (zin/find-state todo-state subtree-end all))
+                                        <span class="org-comment-delimiter">;; </span><span class="org-comment">Find the timestamp to test
+</span>                                        (zin/find-state todo-state subtree-end all))
                                    (<span class="org-keyword">let</span> ((startpoint (point)))
                                      (forward-word 3)
-                                     <span class="org-comment-delimiter">;; </span><span class="org-comment">Convert timestamp into days difference from today</span>
-                                     (zin/org-date-diff startpoint (point)))))))
+                                     <span class="org-comment-delimiter">;; </span><span class="org-comment">Convert timestamp into days difference from today
+</span>                                     (zin/org-date-diff startpoint (point)))))))
           (<span class="org-keyword">if</span> (<span class="org-keyword">or</span> (not subtree-valid)
                   (&lt;= subtree-valid since))
               next-headline
@@ -186,26 +186,26 @@ To automate this, a few custom functions are needed to find DONE tasks older tha
       (<span class="org-keyword">or</span> next-headline (point-max)))))
 
 (<span class="org-keyword">defun</span> <span class="org-function-name">zin/find-state</span> (state <span class="org-type">&amp;optional</span> end all)
-  <span class="org-doc">"Used to search through the logbook of subtrees.</span>
+  <span class="org-doc">"Used to search through the logbook of subtrees.
 
-<span class="org-doc">Tests to see if the first line of the logbook is a change of todo</span>
-<span class="org-doc">status to status STATE</span>
-<span class="org-doc">- Status \"STATE\" from ...</span>
-<span class="org-doc">The search brings the point to the start of YYYY-MM-DD in inactive timestamps.</span>
+Tests to see if the first line of the logbook is a change of todo
+status to status STATE
+- Status \"STATE\" from ...
+The search brings the point to the start of YYYY-MM-DD in inactive timestamps.
 
-<span class="org-doc">Optional argument END defines the point at which to stop searching.</span>
-<span class="org-doc">Optional argument ALL when non-nil specifies to look for any occurence</span>
-<span class="org-doc">of STATE in the subtree, not just in the most recent entry."</span>
+Optional argument END defines the point at which to stop searching.
+Optional argument ALL when non-nil specifies to look for any occurence
+of STATE in the subtree, not just in the most recent entry."</span>
   (<span class="org-keyword">let</span> ((drawer (<span class="org-keyword">if</span> all <span class="org-string">""</span> <span class="org-string">":.*:\\W"</span> <span class="org-string">"CLOSED:"</span>)))
     (<span class="org-keyword">or</span> (re-search-forward (concat drawer <span class="org-string">".*State \\\""</span> state <span class="org-string">"\\\"\\W+from.*\\["</span>) end t)
         (re-search-forward (concat drawer <span class="org-string">".*\\["</span>) end t))))
 
 (<span class="org-keyword">defun</span> <span class="org-function-name">zin/org-date-diff</span> (start end <span class="org-type">&amp;optional</span> compare)
-  <span class="org-doc">"Calculate difference between  selected timestamp to current date.</span>
+  <span class="org-doc">"Calculate difference between  selected timestamp to current date.
 
-<span class="org-doc">The difference between the dates is calculated in days.</span>
-<span class="org-doc">START and END define the region within which the timestamp is found.</span>
-<span class="org-doc">Optional argument COMPARE allows for comparison to a specific date rather than to current date."</span>
+The difference between the dates is calculated in days.
+START and END define the region within which the timestamp is found.
+Optional argument COMPARE allows for comparison to a specific date rather than to current date."</span>
   (<span class="org-keyword">let*</span> ((start-date (<span class="org-keyword">if</span> compare compare (calendar-current-date))))
     (- (calendar-absolute-from-gregorian start-date) (org-time-string-to-absolute (buffer-substring-no-properties start end)))
     ))
@@ -233,28 +233,28 @@ There's also the <code>org-agenda-custom-commands</code> that uses the previousl
   (org-mode . org-indent-mode)
   (org-mode . visual-line-mode)
   <span class="org-builtin">:config</span>
-  (<span class="org-keyword">setq</span> org-html-doctype <span class="org-string">"html5"</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">HTML export</span>
-
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Visual tweaks</span>
-        org-hide-emphasis-markers t
+  (<span class="org-keyword">setq</span> org-html-doctype <span class="org-string">"html5"</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">HTML export
+</span>
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Visual tweaks
+</span>        org-hide-emphasis-markers t
         org-ellipsis <span class="org-string">" &#9660; "</span>
 
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Startup</span>
-        org-startup-with-inline-images t
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Startup
+</span>        org-startup-with-inline-images t
         org-startup-folded <span class="org-string">"showeverything"</span>
         org-startup-indented t
 
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Babel</span>
-        org-babel-min-lines-for-block-output 1
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Babel
+</span>        org-babel-min-lines-for-block-output 1
         org-confirm-babel-evaluate nil
         org-src-preserve-indentation t
 
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Fontify</span>
-        org-fontify-done-headline t
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Fontify
+</span>        org-fontify-done-headline t
         org-src-fontify-natively t
 
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Agenda</span>
-        org-agenda-start-with-log-mode t
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Agenda
+</span>        org-agenda-start-with-log-mode t
         org-log-done 'time
         org-agenda-skip-scheduled-if-done t
         org-log-into-drawer t
@@ -267,8 +267,8 @@ There's also the <code>org-agenda-custom-commands</code> that uses the previousl
 
 
 
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">Refiling</span>
-        org-refile-targets '((<span class="org-string">"~/org/archives.org"</span> <span class="org-builtin">:maxlevel</span> . 1)))
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">Refiling
+</span>        org-refile-targets '((<span class="org-string">"~/org/archives.org"</span> <span class="org-builtin">:maxlevel</span> . 1)))
 
   (advice-add 'org-refile <span class="org-builtin">:after</span> 'org-save-all-org-buffers)
 
@@ -317,16 +317,16 @@ There's also the <code>org-agenda-custom-commands</code> that uses the previousl
 </div>
 </div>
 
-<div id="outline-container-org719ae55" class="outline-3">
-<h3 id="org719ae55">Install major modes</h3>
-<div class="outline-text-3" id="text-org719ae55">
+<div id="outline-container-org1b4d4a4" class="outline-3">
+<h3 id="org1b4d4a4">Install major modes</h3>
+<div class="outline-text-3" id="text-org1b4d4a4">
 <p>
 A few major modes I use.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Major modes</span>
-
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Major modes
+</span>
 (use-package ledger-mode)
 (use-package gnuplot
   <span class="org-builtin">:config</span>
@@ -341,16 +341,16 @@ A few major modes I use.
 </div>
 </div>
 
-<div id="outline-container-org4c8ba19" class="outline-3">
-<h3 id="org4c8ba19">Theme</h3>
-<div class="outline-text-3" id="text-org4c8ba19">
+<div id="outline-container-orga444549" class="outline-3">
+<h3 id="orga444549">Theme</h3>
+<div class="outline-text-3" id="text-orga444549">
 <p>
 Setup the theme (color-theme + modeline).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Theme</span>
-
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Theme
+</span>
 (use-package solarized-theme
   <span class="org-builtin">:config</span> (load-theme 'solarized-selenized-dark))
 
@@ -363,9 +363,9 @@ Setup the theme (color-theme + modeline).
 </div>
 </div>
 
-<div id="outline-container-orgfeec51f" class="outline-3">
-<h3 id="orgfeec51f">UI</h3>
-<div class="outline-text-3" id="text-orgfeec51f">
+<div id="outline-container-orgc4dea9b" class="outline-3">
+<h3 id="orgc4dea9b">UI</h3>
+<div class="outline-text-3" id="text-orgc4dea9b">
 <p>
 All UI related packages.
 </p>
@@ -379,8 +379,8 @@ For code-completion use <code>company</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">UI</span>
-
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">UI
+</span>
 (use-package unicode-fonts
   <span class="org-builtin">:config</span>
   (unicode-fonts-setup)
@@ -394,60 +394,60 @@ For code-completion use <code>company</code>.
   <span class="org-builtin">:init</span>
   (vertico-mode)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Different scroll margin</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-scroll-margin 0)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Different scroll margin
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-scroll-margin 0)
+</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Show more candidates
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-count 20)
+</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Grow and shrink the Vertico minibuffer
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-resize t)
+</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Optionally enable cycling for `</span><span class="org-comment"><span class="org-constant">vertico-next</span></span><span class="org-comment">' and `</span><span class="org-comment"><span class="org-constant">vertico-previous</span></span><span class="org-comment">'.
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-cycle t)
+</span>  )
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Show more candidates</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-count 20)</span>
-
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Grow and shrink the Vertico minibuffer</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-resize t)</span>
-
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Optionally enable cycling for `</span><span class="org-comment"><span class="org-constant">vertico-next</span></span><span class="org-comment">' and `</span><span class="org-comment"><span class="org-constant">vertico-previous</span></span><span class="org-comment">'.</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq vertico-cycle t)</span>
-  )
-
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Optionally use the `</span><span class="org-comment"><span class="org-constant">orderless</span></span><span class="org-comment">' completion style. See</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">`</span><span class="org-comment"><span class="org-constant">+orderless-dispatch</span></span><span class="org-comment">' in the Consult wiki for an advanced Orderless style</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">dispatcher. Additionally enable `</span><span class="org-comment"><span class="org-constant">partial-completion</span></span><span class="org-comment">' for file path</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">expansion. `</span><span class="org-comment"><span class="org-constant">partial-completion</span></span><span class="org-comment">' is important for wildcard support.</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Multiple files can be opened at once with `</span><span class="org-comment"><span class="org-constant">find-file</span></span><span class="org-comment">' if you enter a</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">wildcard. You may also give the `</span><span class="org-comment"><span class="org-constant">initials</span></span><span class="org-comment">' completion style a try.</span>
-(use-package orderless
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Optionally use the `</span><span class="org-comment"><span class="org-constant">orderless</span></span><span class="org-comment">' completion style. See
+</span><span class="org-comment-delimiter">;; </span><span class="org-comment">`</span><span class="org-comment"><span class="org-constant">+orderless-dispatch</span></span><span class="org-comment">' in the Consult wiki for an advanced Orderless style
+</span><span class="org-comment-delimiter">;; </span><span class="org-comment">dispatcher. Additionally enable `</span><span class="org-comment"><span class="org-constant">partial-completion</span></span><span class="org-comment">' for file path
+</span><span class="org-comment-delimiter">;; </span><span class="org-comment">expansion. `</span><span class="org-comment"><span class="org-constant">partial-completion</span></span><span class="org-comment">' is important for wildcard support.
+</span><span class="org-comment-delimiter">;; </span><span class="org-comment">Multiple files can be opened at once with `</span><span class="org-comment"><span class="org-constant">find-file</span></span><span class="org-comment">' if you enter a
+</span><span class="org-comment-delimiter">;; </span><span class="org-comment">wildcard. You may also give the `</span><span class="org-comment"><span class="org-constant">initials</span></span><span class="org-comment">' completion style a try.
+</span>(use-package orderless
   <span class="org-builtin">:init</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Configure a custom style dispatcher (see the Consult wiki)</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq orderless-style-dispatchers '(+orderless-dispatch)</span>
-  <span class="org-comment-delimiter">;;       </span><span class="org-comment">orderless-component-separator #'orderless-escapable-split-on-space)</span>
-  (<span class="org-keyword">setq</span> completion-styles '(orderless)
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Configure a custom style dispatcher (see the Consult wiki)
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq orderless-style-dispatchers '(+orderless-dispatch)
+</span>  <span class="org-comment-delimiter">;;       </span><span class="org-comment">orderless-component-separator #'orderless-escapable-split-on-space)
+</span>  (<span class="org-keyword">setq</span> completion-styles '(orderless)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Persist history over Emacs restarts. Vertico sorts by history position.</span>
-(use-package savehist
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Persist history over Emacs restarts. Vertico sorts by history position.
+</span>(use-package savehist
   <span class="org-builtin">:init</span>
   (savehist-mode))
 
-<span class="org-comment-delimiter">;; </span><span class="org-comment">A few more useful configurations...</span>
-(use-package emacs
+<span class="org-comment-delimiter">;; </span><span class="org-comment">A few more useful configurations...
+</span>(use-package emacs
   <span class="org-builtin">:init</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Add prompt indicator to `</span><span class="org-comment"><span class="org-constant">completing-read-multiple</span></span><span class="org-comment">'.</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Alternatively try `</span><span class="org-comment"><span class="org-constant">consult-completing-read-multiple</span></span><span class="org-comment">'.</span>
-  (<span class="org-keyword">defun</span> <span class="org-function-name">crm-indicator</span> (args)
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Add prompt indicator to `</span><span class="org-comment"><span class="org-constant">completing-read-multiple</span></span><span class="org-comment">'.
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">Alternatively try `</span><span class="org-comment"><span class="org-constant">consult-completing-read-multiple</span></span><span class="org-comment">'.
+</span>  (<span class="org-keyword">defun</span> <span class="org-function-name">crm-indicator</span> (args)
     (cons (concat <span class="org-string">"[CRM] "</span> (car args)) (cdr args)))
   (advice-add #'completing-read-multiple <span class="org-builtin">:filter-args</span> #'crm-indicator)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Do not allow the cursor in the minibuffer prompt</span>
-  (<span class="org-keyword">setq</span> minibuffer-prompt-properties
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Do not allow the cursor in the minibuffer prompt
+</span>  (<span class="org-keyword">setq</span> minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Emacs 28: Hide commands in M-x which do not work in the current mode.</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Vertico commands are hidden in normal buffers.</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq read-extended-command-predicate</span>
-  <span class="org-comment-delimiter">;;       </span><span class="org-comment">#'command-completion-default-include-p)</span>
-
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">Enable recursive minibuffers</span>
-  (<span class="org-keyword">setq</span> enable-recursive-minibuffers t))
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Emacs 28: Hide commands in M-x which do not work in the current mode.
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">Vertico commands are hidden in normal buffers.
+</span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">(setq read-extended-command-predicate
+</span>  <span class="org-comment-delimiter">;;       </span><span class="org-comment">#'command-completion-default-include-p)
+</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Enable recursive minibuffers
+</span>  (<span class="org-keyword">setq</span> enable-recursive-minibuffers t))
 
 (use-package marginalia
   <span class="org-builtin">:config</span>
@@ -482,16 +482,16 @@ For code-completion use <code>company</code>.
 </div>
 </div>
 
-<div id="outline-container-orgae3b139" class="outline-3">
-<h3 id="orgae3b139">Utilities</h3>
-<div class="outline-text-3" id="text-orgae3b139">
+<div id="outline-container-org02a6834" class="outline-3">
+<h3 id="org02a6834">Utilities</h3>
+<div class="outline-text-3" id="text-org02a6834">
 <p>
 Here are all utilities with no effect on UI.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Utilities</span>
-
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Utilities
+</span>
 (use-package magit
   <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c s"</span> . magit-status)
          (<span class="org-string">"C-c b"</span> . magit-blame)
@@ -531,9 +531,9 @@ Here are all utilities with no effect on UI.
 </div>
 </div>
 
-<div id="outline-container-orgc28647d" class="outline-4">
-<h4 id="orgc28647d">Vterm</h4>
-<div class="outline-text-4" id="text-orgc28647d">
+<div id="outline-container-orgb5647e2" class="outline-4">
+<h4 id="orgb5647e2">Vterm</h4>
+<div class="outline-text-4" id="text-orgb5647e2">
 <p>
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 </p>
@@ -550,9 +550,9 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 </div>
 </div>
 
-<div id="outline-container-org10431ec" class="outline-3">
-<h3 id="org10431ec">Python setup</h3>
-<div class="outline-text-3" id="text-org10431ec">
+<div id="outline-container-org2be7727" class="outline-3">
+<h3 id="org2be7727">Python setup</h3>
+<div class="outline-text-3" id="text-org2be7727">
 <p>
 Because Python is the language I use the most, I use more packages than just the major-mode.
 </p>
@@ -566,8 +566,8 @@ Because Python is the language I use the most, I use more packages than just the
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Python</span>
-
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Python
+</span>
 (use-package lsp-mode
   <span class="org-builtin">:commands</span> (lsp lsp-deferred)
   <span class="org-builtin">:config</span>
@@ -586,8 +586,8 @@ Because Python is the language I use the most, I use more packages than just the
 (use-package lsp-pyright
   <span class="org-builtin">:hook</span> (python-mode . (<span class="org-keyword">lambda</span> ()
                          (<span class="org-keyword">require</span> '<span class="org-constant">lsp-pyright</span>)
-                         (lsp)))  <span class="org-comment-delimiter">; </span><span class="org-comment">or lsp-deferred</span>
-  <span class="org-builtin">:init</span> (<span class="org-keyword">setq</span> lsp-pyright-python-executable-cmd <span class="org-string">"python3.8"</span>)
+                         (lsp)))  <span class="org-comment-delimiter">; </span><span class="org-comment">or lsp-deferred
+</span>  <span class="org-builtin">:init</span> (<span class="org-keyword">setq</span> lsp-pyright-python-executable-cmd <span class="org-string">"python3.8"</span>)
   <span class="org-builtin">:config</span> (<span class="org-keyword">setq</span> lsp-pyright-disable-organize-imports t)
   <span class="org-builtin">:bind-keymap</span> (<span class="org-string">"C-c C-o"</span> . lsp-command-map)
   <span class="org-builtin">:bind</span> ((<span class="org-string">"C-c ;"</span> . xref-find-definitions)
