@@ -6,8 +6,8 @@
 
 👋 Hi, I'm a software engineer working on distributed systems.
 
-Software engineer at [[https://www.datadoghq.com/][Datadog 🧑‍💼]] on security products since 2023. From 2019 to 2023 I was a software engineer at [[https://www.backmarket.com/][BackMarket 🧑‍💼]], and before that I was an engineering manager at [[https://www.lumapps.com][LumApps 🧑‍💼]].
+Software engineer working at [[https://www.datadoghq.com/][Datadog]] on security products since 2023. From 2019 to 2023 I was a software engineer at [[https://www.backmarket.com/][BackMarket]], and before that I was an engineering manager at [[https://www.lumapps.com][LumApps]].
 
-In 2022, during my spare time, I also published a pixel-art game on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd 🎮]].
+In 2022, during my spare time, I also published a pixel-art game on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]].
 
 You can find me on [[https://www.linkedin.com/in/florentespanet][@@html:Linkedin <span class="fa-brands fa-linkedin"></span>@@]] and on [[https://github.com/volnt][@@html:Github <span class="fa-brands fa-github"></span>@@]].
