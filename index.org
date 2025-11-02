@@ -4,16 +4,10 @@
 #+html_link_up: /
 #+author: Florent Espanet
 
-👋 Hello,
+👋 Hi, I'm a software engineer working on distributed systems.
 
-here are a few facts about me:
+Software engineer at [[https://www.datadoghq.com/][Datadog 🧑‍💼]] on security products since 2023. From 2019 to 2023 I was a software engineer at [[https://www.backmarket.com/][BackMarket 🧑‍💼]], and before that I was an engineering manager at [[https://www.lumapps.com][LumApps 🧑‍💼]].
 
-
-- Software Engineer working remotely for Datadog
-- Previously working remotely for [[https://www.backmarket.com/][BackMarket 🧑‍💼]]
-- Previously managed a team of 15 Backend Engineers for [[https://www.lumapps.com][LumApps 🧑‍💼]]
-- Published a 2d platformer on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd 🎮]]
-
-I sometimes write some [[file:notes/][Tech notes 📝]], and also some [[file:recipes/][Recipes 🍲]] I want to remember.
+In 2022, during my spare time, I also published a pixel-art game on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd 🎮]].
 
 You can find me on [[https://www.linkedin.com/in/florentespanet][@@html:Linkedin <span class="fa-brands fa-linkedin"></span>@@]] and on [[https://github.com/volnt][@@html:Github <span class="fa-brands fa-github"></span>@@]].
