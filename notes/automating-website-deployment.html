@@ -20,18 +20,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org071daa1">Automating Website Deployment with org-mode and Github pages</a>
+<li><a href="#orga1848a7">Automating Website Deployment with org-mode and Github pages</a>
 <ul>
-<li><a href="#org883d964">Exporting script</a>
+<li><a href="#org12c5f26">Exporting script</a>
 <ul>
-<li><a href="#org9d4d91f">Initialize packages</a></li>
-<li><a href="#org5139c98">Customize the HTML output</a></li>
-<li><a href="#orgadf7775">Define the publishing project</a></li>
+<li><a href="#orgecc4b41">Initialize packages</a></li>
+<li><a href="#org53bf5c9">Customize the HTML output</a></li>
+<li><a href="#orgb58293c">Define the publishing project</a></li>
 </ul>
 </li>
-<li><a href="#orgb8ea04b">Building the site</a></li>
-<li><a href="#orgbb8098d">Github Workflow</a></li>
-<li><a href="#orga627483">Github configuration</a></li>
+<li><a href="#org76814f4">Building the site</a></li>
+<li><a href="#org8712e22">Github Workflow</a></li>
+<li><a href="#orgcee19aa">Github configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -39,9 +39,9 @@
 </div>
 
 
-<div id="outline-container-org071daa1" class="outline-2">
-<h2 id="org071daa1">Automating Website Deployment with org-mode and Github pages</h2>
-<div class="outline-text-2" id="text-org071daa1">
+<div id="outline-container-orga1848a7" class="outline-2">
+<h2 id="orga1848a7">Automating Website Deployment with org-mode and Github pages</h2>
+<div class="outline-text-2" id="text-orga1848a7">
 <p>
 This is heavily inspired by <a href="https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/">System Crafters'</a> and <a href="https://nicolas.petton.fr/blog/blogging-with-org-mode.html">Nicolas Petton's</a> posts on the topic.
 </p>
@@ -64,9 +64,9 @@ Pages are written in the <code>org-mode</code> format and exported to HTML using
 </p>
 </div>
 
-<div id="outline-container-org883d964" class="outline-3">
-<h3 id="org883d964">Exporting script</h3>
-<div class="outline-text-3" id="text-org883d964">
+<div id="outline-container-org12c5f26" class="outline-3">
+<h3 id="org12c5f26">Exporting script</h3>
+<div class="outline-text-3" id="text-org12c5f26">
 <p>
 Publishing org files is handled by <code>ox-publish</code>. Org files can be exported in several formats, but for HTML exports it needs <code>htmlize</code>.
 </p>
@@ -76,9 +76,9 @@ The script needs to be able to run with <code>emacs-nox</code> and not conflict 
 </p>
 </div>
 
-<div id="outline-container-org9d4d91f" class="outline-4">
-<h4 id="org9d4d91f">Initialize packages</h4>
-<div class="outline-text-4" id="text-org9d4d91f">
+<div id="outline-container-orgecc4b41" class="outline-4">
+<h4 id="orgecc4b41">Initialize packages</h4>
+<div class="outline-text-4" id="text-orgecc4b41">
 <p>
 Set the package installation directory so that packages aren't stored in the
 <code>/.emacs.d/elpa path. Then install ~htmlize</code> and load <code>ox-publish</code>.
@@ -105,9 +105,9 @@ Set the package installation directory so that packages aren't stored in the
 </div>
 </div>
 
-<div id="outline-container-org5139c98" class="outline-4">
-<h4 id="org5139c98">Customize the HTML output</h4>
-<div class="outline-text-4" id="text-org5139c98">
+<div id="outline-container-org53bf5c9" class="outline-4">
+<h4 id="org53bf5c9">Customize the HTML output</h4>
+<div class="outline-text-4" id="text-org53bf5c9">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span class="org-keyword">setq</span> org-html-validation-link nil            <span class="org-comment-delimiter">;; </span><span class="org-comment">Don't show validation link
 </span>      org-html-head-include-scripts nil       <span class="org-comment-delimiter">;; </span><span class="org-comment">Use our own scripts
@@ -120,9 +120,9 @@ Set the package installation directory so that packages aren't stored in the
 </div>
 </div>
 
-<div id="outline-container-orgadf7775" class="outline-4">
-<h4 id="orgadf7775">Define the publishing project</h4>
-<div class="outline-text-4" id="text-orgadf7775">
+<div id="outline-container-orgb58293c" class="outline-4">
+<h4 id="orgb58293c">Define the publishing project</h4>
+<div class="outline-text-4" id="text-orgb58293c">
 <p>
 Org-files at the root level are exported at the root of <code>public/</code>.
 </p>
@@ -216,9 +216,9 @@ In the end, everything is exported by <code>org-publish-all</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb8ea04b" class="outline-3">
-<h3 id="orgb8ea04b">Building the site</h3>
-<div class="outline-text-3" id="text-orgb8ea04b">
+<div id="outline-container-org76814f4" class="outline-3">
+<h3 id="org76814f4">Building the site</h3>
+<div class="outline-text-3" id="text-org76814f4">
 <p>
 The script can be invoked with the following command:
 </p>
@@ -230,9 +230,9 @@ The script can be invoked with the following command:
 </div>
 </div>
 
-<div id="outline-container-orgbb8098d" class="outline-3">
-<h3 id="orgbb8098d">Github Workflow</h3>
-<div class="outline-text-3" id="text-orgbb8098d">
+<div id="outline-container-org8712e22" class="outline-3">
+<h3 id="org8712e22">Github Workflow</h3>
+<div class="outline-text-3" id="text-org8712e22">
 <p>
 Now that the website can be exported locally, it needs to be exported on the Github CI.
 </p>
@@ -287,15 +287,15 @@ Install emacs-nox (a <a href="https://launchpad.net/~kelleyk/+archive/ubuntu/ema
 </div>
 </div>
 
-<div id="outline-container-orga627483" class="outline-3">
-<h3 id="orga627483">Github configuration</h3>
-<div class="outline-text-3" id="text-orga627483">
+<div id="outline-container-orgcee19aa" class="outline-3">
+<h3 id="orgcee19aa">Github configuration</h3>
+<div class="outline-text-3" id="text-orgcee19aa">
 <p>
 Inside the Github repositories settings, the Source needs to be set to Branch: <code>gh-pages</code> and Directory: <code>/</code>:
 </p>
 
 
-<div id="orgef8d465" class="figure">
+<div id="orgdba9ab5" class="figure">
 <p><img src="../images/github-pages.jpg" alt="github-pages.jpg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Github configuration</p>
