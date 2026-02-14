@@ -2,9 +2,9 @@
 #+date: <2022-03-28 mon.>
 #+author: Florent Espanet
 
-Hi, I'm a software engineer working on distributed systems.
+Hi, I'm a software engineer working on distributed systems and security.
 
-Software engineer at [[https://www.datadoghq.com/][Datadog]] working on security products since 2023. Previously at [[https://www.backmarket.com/][BackMarket]] (2019-2023) and [[https://www.lumapps.com][LumApps]] before that.
+Currently at [[https://www.datadoghq.com/][Datadog]] building security products since 2023. Previously at [[https://www.backmarket.com/][BackMarket]] (2019-2023) and [[https://www.lumapps.com][LumApps]] before that.
 
 In 2022 I published a pixel-art game on Steam with [[https://www.leaespanet.com/][my sister]]: [[https://store.steampowered.com/app/1808820/Alien_Shepherd/][Alien Shepherd]].
 
